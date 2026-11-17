@@ -1576,10 +1576,17 @@ html, body {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   padding: 4px 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 210, 255, 0.08);
+  border: 1px solid #00d2ff !important;
   border-radius: 9999px;
-  color: #ffffff;
+  color: #00d2ff;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+  transition: all 0.25s ease;
+}
+
+.stacking-card-wrapper:hover .stacking-card-category {
+  border-color: #00d2ff !important;
+  box-shadow: 0 0 16px rgba(0, 210, 255, 0.4);
 }
 
 .stacking-card-title {
