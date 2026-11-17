@@ -1,10 +1,18 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { workExperience } from '../data/portfolioData';
 import LightTunnel from './LightTunnel';
 
 export default function Experience({ isStandalonePage = false }) {
   const timelineRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Track scroll progress across the experience timeline
   const { scrollYProgress } = useScroll({
@@ -102,65 +110,87 @@ export default function Experience({ isStandalonePage = false }) {
 
           {workExperience.map((exp, index) => {
             const isLeft = index % 2 === 0;
+            const branchOrigin = isLeft && !isMobile ? 'right center' : 'left center';
+
             return (
-              <motion.div
-                key={exp.id}
-                className="timeline-item"
-                initial={{ opacity: 0, x: isLeft ? -60 : 60, scale: 0.95 }}
-                whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                viewport={{ once: true, margin: '-50px', amount: 0.2 }}
-                transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-              >
+              <div key={exp.id} className="timeline-item">
+                {/* STATIONARY MILESTONE DOT ON THE SPINE */}
                 <motion.div
                   className="timeline-dot"
-                  initial={{ scale: 0.3, opacity: 0 }}
+                  initial={{ scale: 0.4, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: 0.2 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ transformOrigin: 'center center' }}
                 />
 
-                <div className="timeline-card">
-                <div className="timeline-header">
-                  <div>
-                    <h3 className="timeline-company">{exp.company}</h3>
-                    <div className="timeline-role">{exp.role}</div>
-                  </div>
+                {/* GRAPH BRANCH CONNECTOR FROM SPINE DOT TO CARD */}
+                <motion.div
+                  className="timeline-connector"
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  whileInView={{ scaleX: 1, opacity: 1 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ transformOrigin: branchOrigin }}
+                />
 
-                  <div className="d-flex align-items-center gap-2">
-                    <span className="timeline-badge">
-                      <i className="ri-calendar-line"></i> {exp.period}
-                    </span>
-                    {exp.status === 'Current Role' && (
-                      <span className="status-pill">
-                        <span className="status-dot"></span> Active
+                {/* TIMELINE CONTENT CARD WITH ENTRANCE ANIMATION */}
+                <motion.div
+                  className="timeline-card"
+                  initial={{
+                    opacity: 0,
+                    x: isMobile ? 30 : (isLeft ? -45 : 45),
+                    scale: 0.96
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                    scale: 1
+                  }}
+                  viewport={{ once: true, margin: '-50px', amount: 0.2 }}
+                  transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <div className="timeline-header">
+                    <div>
+                      <h3 className="timeline-company">{exp.company}</h3>
+                      <div className="timeline-role">{exp.role}</div>
+                    </div>
+
+                    <div className="d-flex align-items-center gap-2">
+                      <span className="timeline-badge">
+                        <i className="ri-calendar-line"></i> {exp.period}
                       </span>
-                    )}
+                      {exp.status === 'Current Role' && (
+                        <span className="status-pill">
+                          <span className="status-dot"></span> Active
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                <div className="text-muted small mb-3">
-                  <i className="ri-map-pin-2-line"></i> {exp.location}
-                </div>
+                  <div className="text-muted small mb-3">
+                    <i className="ri-map-pin-2-line"></i> {exp.location}
+                  </div>
 
-                <p className="timeline-desc">{exp.description}</p>
+                  <p className="timeline-desc">{exp.description}</p>
 
-                <ul className="timeline-highlights">
-                  {exp.highlights.map((item, idx) => (
-                    <li key={idx}>{item}</li>
-                  ))}
-                </ul>
+                  <ul className="timeline-highlights">
+                    {exp.highlights.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
 
-                <div className="timeline-techs">
-                  {exp.technologies.map((tech, idx) => (
-                    <span key={idx} className="timeline-tech-pill">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+                  <div className="timeline-techs">
+                    {exp.technologies.map((tech, idx) => (
+                      <span key={idx} className="timeline-tech-pill">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-          );
-        })}
+            );
+          })}
         </div>
       </div>
     </section>

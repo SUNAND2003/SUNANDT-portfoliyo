@@ -805,7 +805,7 @@ body {
   position: relative;
   max-width: 900px;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 10px 0 20px 0;
 }
 
 .experience-timeline::before {
@@ -815,19 +815,34 @@ body {
 /* Continuous Vertical Timeline Rail */
 .timeline-track-rail {
   position: absolute;
-  top: 24px;
+  top: 48px;
   bottom: 24px;
   left: 20px;
   width: 2px;
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateX(-50%);
+  margin-left: -1px;
+  background: rgba(255, 255, 255, 0.14);
   z-index: 1;
 }
 
 @media (min-width: 768px) {
   .timeline-track-rail {
     left: 50%;
+    margin-left: -1px;
   }
+}
+
+/* Terminal anchor dot at the bottom of the rail */
+.timeline-track-rail::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00d2ff;
+  box-shadow: 0 0 10px #00d2ff, 0 0 16px rgba(0, 210, 255, 0.8);
 }
 
 /* Active Glowing Fill Trail */
@@ -836,7 +851,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(180deg, rgba(0, 210, 255, 0.25) 0%, #00d2ff 100%);
+  background: linear-gradient(180deg, rgba(0, 210, 255, 0.3) 0%, #00d2ff 100%);
   box-shadow: 0 0 14px rgba(0, 210, 255, 0.85);
   border-radius: 9999px;
 }
@@ -845,9 +860,10 @@ body {
 .timeline-scroll-arrow {
   position: absolute;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 34px;
   height: 34px;
+  margin-left: -17px;
+  margin-top: -17px;
   z-index: 6;
   pointer-events: none;
 }
@@ -909,26 +925,105 @@ body {
 
 .timeline-item {
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 55px;
 }
 
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Milestone Graph Dot - Perfectly Centered on Spine */
 .timeline-dot {
   position: absolute;
-  top: 24px;
+  top: 38px;
   left: 20px;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 16px;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  margin-top: -11px;
   border-radius: 50%;
   background: #000000 !important;
-  border: 3px solid #ffffff !important;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4) !important;
-  z-index: 2;
+  border: 2.5px solid #00d2ff !important;
+  box-shadow: 0 0 14px rgba(0, 210, 255, 0.75), inset 0 0 6px rgba(0, 210, 255, 0.4) !important;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }
 
 @media (min-width: 768px) {
   .timeline-dot {
     left: 50%;
+    margin-left: -11px;
+  }
+}
+
+/* Inner illuminated neon core for milestone dot */
+.timeline-dot::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00d2ff;
+  box-shadow: 0 0 8px #00d2ff, 0 0 14px rgba(0, 210, 255, 0.9);
+}
+
+/* Subtle orbital dashed halo for milestone dot */
+.timeline-dot::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 210, 255, 0.45);
+  animation: dotAuraSpin 10s linear infinite;
+}
+
+@keyframes dotAuraSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Graph Branch Connector Line from Dot to Card */
+.timeline-connector {
+  position: absolute;
+  top: 38px;
+  height: 2px;
+  margin-top: -1px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Mobile connector: reaches from spine at 20px to card at 50px */
+@media (max-width: 767px) {
+  .timeline-connector {
+    left: 20px;
+    width: 30px;
+    background: linear-gradient(90deg, #00d2ff 0%, rgba(0, 210, 255, 0.2) 100%);
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
+  }
+}
+
+/* Desktop connectors: reaches from spine at 50% to left/right card */
+@media (min-width: 768px) {
+  /* Left card (odd) - branch goes from rail (50%) to card right edge (45%) */
+  .timeline-item:nth-child(odd) .timeline-connector {
+    right: 50%;
+    width: 5%;
+    background: linear-gradient(270deg, #00d2ff 0%, rgba(0, 210, 255, 0.2) 100%);
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
+  }
+
+  /* Right card (even) - branch goes from rail (50%) to card left edge (55%) */
+  .timeline-item:nth-child(even) .timeline-connector {
+    left: 50%;
+    width: 5%;
+    background: linear-gradient(90deg, #00d2ff 0%, rgba(0, 210, 255, 0.2) 100%);
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.5);
   }
 }
 
@@ -940,6 +1035,7 @@ body {
   border-radius: 16px;
   padding: 28px;
   transition: all 0.3s ease;
+  z-index: 3;
 }
 
 .timeline-card:hover {
