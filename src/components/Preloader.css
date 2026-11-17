@@ -1,0 +1,386 @@
+/* ==========================================================================
+   PORTFOLIO PRELOADER - LUXURY CYBERNETIC THEME
+   ========================================================================== */
+
+.portfolio-preloader {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 9999999999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   Curtain Panels (Cinematic Split Reveal)
+   -------------------------------------------------------------------------- */
+.preloader-curtain {
+  position: absolute !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 50.5% !important;
+  background: #07080c !important;
+  z-index: 1 !important;
+  transition: transform 0.85s cubic-bezier(0.77, 0, 0.175, 1);
+  will-change: transform;
+}
+
+.preloader-curtain-top {
+  top: 0 !important;
+  transform-origin: top center;
+  border-bottom: 1px solid rgba(0, 210, 255, 0.15);
+}
+
+.preloader-curtain-bottom {
+  bottom: 0 !important;
+  transform-origin: bottom center;
+  border-top: 1px solid rgba(0, 210, 255, 0.15);
+}
+
+/* Exit Curtain Slide */
+.portfolio-preloader.preloader-exit .preloader-curtain-top {
+  transform: translateY(-101%);
+}
+
+.portfolio-preloader.preloader-exit .preloader-curtain-bottom {
+  transform: translateY(101%);
+}
+
+/* Center Horizontal Seam Light Beam */
+.preloader-seam-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 210, 255, 0.8) 50%, transparent 100%);
+  box-shadow: 0 0 16px rgba(0, 210, 255, 0.9), 0 0 32px rgba(0, 210, 255, 0.5);
+  z-index: 2;
+  transition: opacity 0.4s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.portfolio-preloader.preloader-exit .preloader-seam-light {
+  opacity: 0;
+  transform: translate(-50%, -50%) scaleX(1.3);
+}
+
+/* --------------------------------------------------------------------------
+   Background Ambient Elements
+   -------------------------------------------------------------------------- */
+.preloader-bg-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 210, 255, 0.13) 0%, rgba(0, 140, 255, 0.04) 40%, transparent 70%);
+  pointer-events: none;
+  animation: preloaderPulseGlow 3s ease-in-out infinite alternate;
+}
+
+.preloader-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center center;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+@keyframes preloaderPulseGlow {
+  0% { opacity: 0.7; transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1.04); }
+}
+
+/* --------------------------------------------------------------------------
+   Center Content Container
+   -------------------------------------------------------------------------- */
+.preloader-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 440px;
+  width: 90%;
+  padding: 24px;
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-preloader.preloader-exit .preloader-content {
+  opacity: 0;
+  transform: scale(1.08) translateY(-16px);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   Emblem / Monogram Badge
+   -------------------------------------------------------------------------- */
+.preloader-emblem {
+  position: relative;
+  width: 104px;
+  height: 104px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.preloader-ring-svg {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 104px !important;
+  height: 104px !important;
+  fill: none !important;
+  transform: rotate(-90deg);
+}
+
+.ring-track {
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 3.5;
+}
+
+.ring-spin {
+  stroke: rgba(0, 210, 255, 0.3);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 12;
+  animation: preloaderSpin 12s linear infinite;
+  transform-origin: center center;
+}
+
+.ring-progress {
+  stroke: #00d2ff;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-dasharray: 276.46; /* 2 * PI * 44 */
+  transition: stroke-dashoffset 0.12s ease-out;
+  filter: drop-shadow(0 0 6px #00d2ff);
+}
+
+@keyframes preloaderSpin {
+  100% { transform: rotate(360deg); }
+}
+
+.preloader-monogram {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-shadow: 0 0 18px rgba(0, 210, 255, 0.7);
+}
+
+.mono-letter {
+  background: linear-gradient(135deg, #ffffff 30%, #00d2ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.mono-dot {
+  font-size: 22px;
+  margin: 0 2px;
+  color: #00d2ff;
+  text-shadow: 0 0 10px #00d2ff;
+  animation: preloaderBlink 1.4s ease-in-out infinite;
+}
+
+@keyframes preloaderBlink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+/* Corner Cyber Tech Brackets */
+.corner-accent {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(0, 210, 255, 0.45);
+  border-style: solid;
+  pointer-events: none;
+}
+
+.corner-accent.top-left {
+  top: -6px;
+  left: -6px;
+  border-width: 2px 0 0 2px;
+}
+
+.corner-accent.top-right {
+  top: -6px;
+  right: -6px;
+  border-width: 2px 2px 0 0;
+}
+
+.corner-accent.bottom-left {
+  bottom: -6px;
+  left: -6px;
+  border-width: 0 0 2px 2px;
+}
+
+.corner-accent.bottom-right {
+  bottom: -6px;
+  right: -6px;
+  border-width: 0 2px 2px 0;
+}
+
+/* --------------------------------------------------------------------------
+   Brand & Role Titles
+   -------------------------------------------------------------------------- */
+.preloader-brand {
+  margin-bottom: 22px;
+}
+
+.preloader-name {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 210, 255, 0.25);
+}
+
+.preloader-role {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #00d2ff;
+  opacity: 0.85;
+}
+
+.role-pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00d2ff;
+  box-shadow: 0 0 8px #00d2ff;
+  animation: preloaderDotPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes preloaderDotPulse {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.25); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.5; }
+}
+
+/* --------------------------------------------------------------------------
+   Progress Bar Track & Fill
+   -------------------------------------------------------------------------- */
+.preloader-bar-wrap {
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 14px;
+}
+
+.preloader-bar-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #0077ff, #00d2ff 70%, #ffffff);
+  border-radius: 999px;
+  position: relative;
+  transition: width 0.08s linear;
+  box-shadow: 0 0 12px #00d2ff, 0 0 24px rgba(0, 210, 255, 0.6);
+}
+
+.preloader-bar-light {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px #ffffff, 0 0 20px #00d2ff;
+}
+
+/* --------------------------------------------------------------------------
+   Status Row & Counter
+   -------------------------------------------------------------------------- */
+.preloader-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 280px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 11px;
+}
+
+.preloader-status-msg {
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.preloader-counter {
+  color: #00d2ff;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Responsiveness
+   -------------------------------------------------------------------------- */
+@media (max-width: 576px) {
+  .preloader-emblem {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 18px;
+  }
+  .preloader-ring-svg {
+    width: 90px !important;
+    height: 90px !important;
+  }
+  .preloader-monogram {
+    font-size: 22px;
+  }
+  .preloader-name {
+    font-size: 18px;
+    letter-spacing: 0.24em;
+  }
+  .preloader-role {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+  }
+  .preloader-bar-wrap,
+  .preloader-status-row {
+    max-width: 240px;
+  }
+}
