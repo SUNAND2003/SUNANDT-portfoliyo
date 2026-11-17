@@ -6,7 +6,7 @@ export const personalInfo = {
   bio: "I am a dedicated Senior Full Stack Developer with hands-on industry experience building modern, scalable web applications from conception to production deployment. Currently working as a Senior Full Stack Developer at Hexa Branding, and previously at Bloombiz Creatives. I blend clean backend architecture with polished, intuitive user interfaces.",
   cvUrl: "/assets/images/SUNAND_T_CV (1).pdf",
   heroImage: "/assets/images/about/WhatsApp Image 2025-08-08 at 12.05.22_949dd62e.jpg",
-  aboutImage: "/assets/images/about/sunand-about-bw-background.jpg",
+  aboutImage: "/assets/images/about/sunand-about-new.jpg",
   email: "sunandt2003@gmail.com",
   phone: "+91-7510399453",
   address: "Calicut, Kerala, India",

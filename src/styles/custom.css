@@ -18,7 +18,8 @@
   --glass-border: rgba(255, 255, 255, 0.14);
 }
 
-html, body {
+html,
+body {
   background-color: #000000 !important;
   color: #ffffff !important;
   overflow-x: clip !important;
@@ -28,13 +29,16 @@ html, body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--theme-black);
 }
+
 ::-webkit-scrollbar-thumb {
   background: #27272a;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #3f3f46;
 }
@@ -677,13 +681,11 @@ html, body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.15) 0%,
-    transparent 20%,
-    transparent 65%,
-    rgba(0, 0, 0, 0.55) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.15) 0%,
+      transparent 20%,
+      transparent 65%,
+      rgba(0, 0, 0, 0.55) 100%);
   pointer-events: none;
   z-index: 2;
 }
@@ -869,6 +871,7 @@ html, body {
     transform: translate(-50%, -50%) scale(0.85);
     opacity: 0.95;
   }
+
   100% {
     transform: translate(-50%, -50%) scale(2.2);
     opacity: 0;
@@ -893,9 +896,12 @@ html, body {
 }
 
 @keyframes arrowGentleBounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(2px);
   }
@@ -947,6 +953,7 @@ html, body {
     margin-left: 0;
     margin-right: 55%;
   }
+
   .timeline-item:nth-child(even) .timeline-card {
     margin-left: 55%;
   }
@@ -1011,9 +1018,20 @@ html, body {
 }
 
 @keyframes pulse-dot {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.35); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.7; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.35);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
 }
 
 .experience-area .text-muted {
@@ -1119,18 +1137,33 @@ html, body {
 }
 
 @keyframes servicesOrbFloat1 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-70px, 60px) scale(1.15); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(-70px, 60px) scale(1.15);
+  }
 }
 
 @keyframes servicesOrbFloat2 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(80px, -50px) scale(1.2); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(80px, -50px) scale(1.2);
+  }
 }
 
 @keyframes servicesOrbFloat3 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-40px, -40px) scale(1.1); }
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(-40px, -40px) scale(1.1);
+  }
 }
 
 /* Modern Bento Service Card with Spotlight & Kinetic Animation */
@@ -1144,8 +1177,8 @@ html, body {
   flex-direction: column;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.4s ease;
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease;
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -1172,11 +1205,9 @@ html, body {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(
-    420px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-    rgba(0, 210, 255, 0.12),
-    transparent 70%
-  );
+  background: radial-gradient(420px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      rgba(0, 210, 255, 0.12),
+      transparent 70%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
@@ -1219,8 +1250,8 @@ html, body {
   font-size: 25px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.35s ease,
-              color 0.3s ease;
+    box-shadow 0.35s ease,
+    color 0.3s ease;
 }
 
 .modern-service-card:hover .service-icon-box {
@@ -1420,8 +1451,13 @@ html, body {
 }
 
 @keyframes calloutGlowRotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .services-callout-banner:hover {
@@ -1566,7 +1602,9 @@ html, body {
 }
 
 @media (max-width: 767px) {
-  html, body {
+
+  html,
+  body {
     overflow-x: clip !important;
   }
 
@@ -1741,9 +1779,17 @@ html, body {
   display: inline-block;
 }
 
-.browser-dot.red { background: #ef4444; }
-.browser-dot.yellow { background: #f59e0b; }
-.browser-dot.green { background: #10b981; }
+.browser-dot.red {
+  background: #ef4444;
+}
+
+.browser-dot.yellow {
+  background: #f59e0b;
+}
+
+.browser-dot.green {
+  background: #10b981;
+}
 
 .browser-address-bar {
   margin-left: 8px;
@@ -1782,15 +1828,18 @@ html, body {
     padding: 24px 18px;
     border-radius: 20px;
   }
+
   .stacking-card-title {
     font-size: 22px !important;
     margin-bottom: 10px !important;
   }
+
   .stacking-card-desc {
     font-size: 14px !important;
     line-height: 1.55 !important;
     margin-bottom: 16px !important;
   }
+
   .stacking-card-tags {
     margin-bottom: 18px !important;
     gap: 6px !important;
@@ -1802,48 +1851,60 @@ html, body {
     padding: 18px 16px !important;
     border-radius: 18px !important;
   }
+
   .stacking-card-meta {
     margin-bottom: 10px !important;
   }
+
   .stacking-card-index {
     font-size: 15px !important;
   }
+
   .stacking-card-category {
     font-size: 11px !important;
     padding: 3px 9px !important;
   }
+
   .stacking-card-title {
     font-size: 19px !important;
     margin-bottom: 8px !important;
   }
+
   .stacking-card-desc {
     font-size: 13px !important;
     line-height: 1.5 !important;
     margin-bottom: 12px !important;
   }
+
   .stacking-card-tags {
     margin-bottom: 14px !important;
     gap: 5px !important;
   }
+
   .stacking-tag {
     font-size: 10.5px !important;
     padding: 2px 7px !important;
   }
+
   .stacking-card-actions {
     gap: 8px !important;
   }
+
   .stacking-btn-primary,
   .stacking-btn-secondary {
     padding: 7px 13px !important;
     font-size: 12.5px !important;
   }
+
   .browser-mockup-header {
     padding: 7px 10px !important;
   }
+
   .browser-dot {
     width: 8px !important;
     height: 8px !important;
   }
+
   .browser-address-bar {
     font-size: 10px !important;
     padding: 2px 8px !important;
