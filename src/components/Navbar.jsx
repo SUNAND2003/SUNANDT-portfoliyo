@@ -74,7 +74,7 @@ export default function Navbar() {
     <>
       <header
         className={`main-header exact-model-header ${
-          isSticky ? 'fixed-header' : 'normal-header on-light-top'
+          isSticky ? 'fixed-header' : 'normal-header on-dark-top'
         }`}
       >
         <div className="container">

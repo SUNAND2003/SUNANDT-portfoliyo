@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import SmoothScroll from './components/SmoothScroll';
 import ScrollProgress from './components/ScrollProgress';
+import ScrollColorController from './components/ScrollColorController';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
 import ScrollToTop from './components/ScrollToTop';
@@ -43,6 +44,9 @@ export default function App() {
   return (
     <SmoothScroll>
       <div className="portfolio-app">
+        {/* DYNAMIC SCROLL COLOR & OPTIONS ENGINE */}
+        <ScrollColorController />
+
         {/* SCROLL READING PROGRESS AT TOP */}
         <ScrollProgress />
 
