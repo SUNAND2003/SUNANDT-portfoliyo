@@ -20,10 +20,10 @@ export default function About({ isStandalonePage = false }) {
       >
         <Galaxy
           layers={3}
-          density={1.6}
-          glowIntensity={0.5}
-          starSize={1.1}
-          flareIntensity={0.8}
+          density={1.0}
+          glowIntensity={0.45}
+          starSize={1.0}
+          flareIntensity={0.7}
           starSpeed={0.3}
           mouseRepulsion={true}
           repulsionStrength={1.5}
