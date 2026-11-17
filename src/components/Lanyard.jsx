@@ -209,8 +209,14 @@ const loadImage = (cache, url) => {
     }
     image.decoding = 'async';
     image.onload = () => resolve(image);
-    image.onerror = () => resolve(null);
+    image.onerror = (err) => {
+      console.warn('Lanyard failed to load image:', url, err);
+      resolve(null);
+    };
     image.src = url;
+    if (image.complete && image.naturalWidth > 0) {
+      resolve(image);
+    }
   });
   cache.set(url, promise);
   return promise;
@@ -419,6 +425,7 @@ const buildWeaveTexture = () => {
 };
 
 const drawFitted = (ctx, image, width, height, fit) => {
+  if (!image || !image.width || !image.height) return;
   const scale = (fit === 'contain' ? Math.min : Math.max)(width / image.width, height / image.height);
   const w = image.width * scale;
   const h = image.height * scale;
@@ -790,9 +797,17 @@ const Lanyard = ({
 
     const imageCache = new Map();
     const images = { front: null, back: null, strap: null };
+    const initW = FACE_WIDTH;
+    const initH = Math.round((FACE_WIDTH * 2.25) / 1.6);
     const frontCanvas = document.createElement('canvas');
+    frontCanvas.width = initW;
+    frontCanvas.height = initH;
     const backCanvas = document.createElement('canvas');
+    backCanvas.width = initW;
+    backCanvas.height = initH;
     const strapCanvas = document.createElement('canvas');
+    strapCanvas.width = 192;
+    strapCanvas.height = 384;
     const frontTexture = makeCanvasTexture(frontCanvas, anisotropy);
     const backTexture = makeCanvasTexture(backCanvas, anisotropy);
     const strapTexture = makeCanvasTexture(strapCanvas, anisotropy);
@@ -894,8 +909,6 @@ const Lanyard = ({
         frontCanvas.height = height;
         backCanvas.width = width;
         backCanvas.height = height;
-        frontTexture.dispose();
-        backTexture.dispose();
       }
       paintFace(frontCanvas, images.front, color, s.imageFit);
       paintFace(backCanvas, images.back || images.front, color, s.imageFit);
@@ -908,7 +921,6 @@ const Lanyard = ({
       const s = settingsRef.current;
       tileRatio = paintStrap(strapCanvas, images.strap, parseColor(s.strapColor, [0.07, 0.07, 0.07]));
       weave.repeat.set(2, 2 * tileRatio);
-      strapTexture.dispose();
       strapTexture.needsUpdate = true;
       start();
     };
