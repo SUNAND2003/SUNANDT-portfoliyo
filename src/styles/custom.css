@@ -21,6 +21,7 @@
 html, body {
   background-color: #000000 !important;
   color: #ffffff !important;
+  overflow-x: clip !important;
 }
 
 /* Custom Scrollbar */
@@ -1472,7 +1473,7 @@ html, body {
 .projects-area {
   background: #000000 !important;
   position: relative;
-  overflow: hidden;
+  overflow: visible !important;
 }
 
 /* Projects Controls Bar (Category Filter + Stacking/Grid Toggle) */
@@ -1523,29 +1524,43 @@ html, body {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
+  overflow: visible !important;
 }
 
 .stacking-card-wrapper {
+  position: -webkit-sticky;
   position: sticky;
   margin-bottom: 50px;
   width: 100%;
+  will-change: top;
 }
 
 .stacking-card-inner {
   background: #0c0e14 !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
   border-radius: 24px;
-  padding: 44px;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7);
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  padding: 42px;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.8), 0 20px 55px rgba(0, 0, 0, 0.9);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
   position: relative;
   overflow: hidden;
 }
 
 .stacking-card-wrapper:hover .stacking-card-inner {
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  border-top-color: rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 -12px 35px rgba(0, 0, 0, 0.9), 0 30px 70px rgba(0, 0, 0, 0.95) !important;
+  transform: translateY(-4px);
+}
+
+@media (max-width: 767px) {
+  .stacking-card-wrapper {
+    position: relative !important;
+    top: auto !important;
+    margin-bottom: 24px !important;
+  }
 }
 
 /* Left Card Details */

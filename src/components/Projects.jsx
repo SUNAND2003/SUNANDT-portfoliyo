@@ -4,6 +4,7 @@ import { projects, projectCategories } from '../data/portfolioData';
 
 export default function Projects({ isStandalonePage = false }) {
   const [activeCategory, setActiveCategory] = useState('all');
+  const [viewMode, setViewMode] = useState('stack');
 
   const filteredProjects = activeCategory === 'all'
     ? projects
@@ -42,7 +43,7 @@ export default function Projects({ isStandalonePage = false }) {
           viewport={{ once: true, margin: '-40px' }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <div className="d-flex align-items-center justify-content-center flex-wrap gap-3">
+          <div className="d-flex align-items-center justify-content-between flex-wrap gap-3">
             {/* CATEGORY TABS */}
             <div className="category-filter-wrap m-0">
               {projectCategories.map((cat) => (
@@ -55,11 +56,32 @@ export default function Projects({ isStandalonePage = false }) {
                 </button>
               ))}
             </div>
+
+            {/* VIEW MODE TOGGLE (STACK / GRID) */}
+            <div className="view-mode-toggle">
+              <button
+                type="button"
+                className={`view-toggle-btn ${viewMode === 'stack' ? 'active' : ''}`}
+                onClick={() => setViewMode('stack')}
+                title="Stacking Cards Scroll Animation"
+              >
+                <i className="ri-stack-line me-1"></i> Stack View
+              </button>
+              <button
+                type="button"
+                className={`view-toggle-btn ${viewMode === 'grid' ? 'active' : ''}`}
+                onClick={() => setViewMode('grid')}
+                title="Grid View"
+              >
+                <i className="ri-grid-line me-1"></i> Grid
+              </button>
+            </div>
           </div>
         </motion.div>
 
-        {/* STACKING CARDS SCROLL MODEL */}
-        <div className="stacking-projects-deck">
+        {/* VIEW 1: STACKING CARDS SCROLL MODEL */}
+        {viewMode === 'stack' && (
+          <div className="stacking-projects-deck">
             <AnimatePresence mode="popLayout">
               {filteredProjects.map((project, index) => {
                 let hostname = 'demo.online';
@@ -74,16 +96,16 @@ export default function Projects({ isStandalonePage = false }) {
                     key={project.id}
                     className="stacking-card-wrapper"
                     style={{
-                      top: `calc(105px + ${index * 22}px)`,
+                      top: `calc(95px + ${index * 24}px)`,
                       zIndex: index + 1
                     }}
                   >
                     <motion.div
                       className="stacking-card-inner"
-                      initial={{ opacity: 0, y: 55, scale: 0.95 }}
-                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                      viewport={{ once: true, margin: '-60px' }}
-                      transition={{ duration: 0.65, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+                      initial={{ opacity: 0, y: 35 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.12 }}
+                      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                     >
                       <div className="row align-items-center g-4 g-lg-5">
                         {/* LEFT DETAILS */}
@@ -150,6 +172,68 @@ export default function Projects({ isStandalonePage = false }) {
               })}
             </AnimatePresence>
           </div>
+        )}
+
+        {/* VIEW 2: MODERN RESPONSIVE GRID VIEW */}
+        {viewMode === 'grid' && (
+          <div className="projects-grid-view">
+            <div className="row g-4">
+              <AnimatePresence mode="popLayout">
+                {filteredProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    className="col-lg-4 col-md-6"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                  >
+                    <div className="modern-project-card">
+                      <div className="project-img-wrapper">
+                        <img src={project.image} alt={project.title} loading="lazy" />
+                        <span className="project-category-badge">{project.categoryLabel}</span>
+                      </div>
+                      <div className="project-card-body">
+                        <h4 className="project-card-title">{project.title}</h4>
+                        <p className="project-card-desc">{project.description}</p>
+                        <div className="project-tags">
+                          {project.tags.map((tag, idx) => (
+                            <span key={idx} className="project-tag">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="project-actions">
+                          {project.liveDemo && (
+                            <a
+                              href={project.liveDemo}
+                              className="project-btn-primary"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Live Demo <i className="ri-arrow-right-up-line ms-1"></i>
+                            </a>
+                          )}
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              className="project-btn-secondary"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label="View on GitHub"
+                            >
+                              <i className="ri-github-fill"></i>
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
