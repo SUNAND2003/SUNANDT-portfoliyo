@@ -1566,8 +1566,9 @@ html, body {
   font-family: 'Oswald', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #ffffff;
+  color: #00d2ff !important;
   letter-spacing: 1px;
+  text-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
 }
 
 .stacking-card-category {
