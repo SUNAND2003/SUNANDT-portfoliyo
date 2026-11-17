@@ -605,9 +605,10 @@ html, body {
 }
 
 .hero-content .theme-btn:hover {
-  background: #27272a !important;
-  color: #ffffff !important;
-  border-color: #27272a !important;
+  background: #00d2ff !important;
+  color: #000000 !important;
+  border-color: #00d2ff !important;
+  box-shadow: 0 6px 22px rgba(0, 210, 255, 0.5) !important;
   transform: translateY(-2px);
 }
 
@@ -721,7 +722,8 @@ html, body {
 }
 
 .skill-box-card:hover {
-  border-color: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(0, 210, 255, 0.45) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 210, 255, 0.15) !important;
   transform: translateY(-4px);
 }
 
@@ -753,9 +755,14 @@ html, body {
 }
 
 .skill-badge-item:hover {
-  background: rgba(255, 255, 255, 0.09) !important;
-  border-color: rgba(255, 255, 255, 0.3) !important;
+  background: rgba(0, 210, 255, 0.12) !important;
+  border-color: rgba(0, 210, 255, 0.45) !important;
+  color: #00d2ff !important;
   transform: translateY(-2px);
+}
+
+.skill-badge-item:hover i {
+  color: #00d2ff !important;
 }
 
 .skill-badge-item i {
@@ -914,8 +921,8 @@ html, body {
 }
 
 .timeline-card:hover {
-  border-color: rgba(255, 255, 255, 0.28) !important;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8) !important;
+  border-color: rgba(0, 210, 255, 0.4) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 22px rgba(0, 210, 255, 0.18) !important;
   transform: translateY(-3px);
 }
 
@@ -1630,10 +1637,11 @@ html, body {
 }
 
 .stacking-btn-primary:hover {
-  background: #e2e8f0 !important;
+  background: #00d2ff !important;
   color: #000000 !important;
+  border-color: #00d2ff !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 210, 255, 0.45);
 }
 
 .stacking-btn-secondary {
@@ -1652,8 +1660,10 @@ html, body {
 }
 
 .stacking-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.16) !important;
-  color: #ffffff !important;
+  background: rgba(0, 210, 255, 0.15) !important;
+  border-color: rgba(0, 210, 255, 0.45) !important;
+  color: #00d2ff !important;
+  box-shadow: 0 4px 16px rgba(0, 210, 255, 0.25);
 }
 
 /* Right Browser Mockup */
@@ -1754,8 +1764,9 @@ html, body {
 
 .projects-area .filter-tab-btn:hover {
   background: #181d26 !important;
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  color: #ffffff !important;
+  border-color: #00d2ff !important;
+  color: #00d2ff !important;
+  box-shadow: 0 0 14px rgba(0, 210, 255, 0.3) !important;
 }
 
 .projects-area .filter-tab-btn.active {
@@ -1781,8 +1792,8 @@ html, body {
 
 .projects-area .modern-project-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(255, 255, 255, 0.3) !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8) !important;
+  border-color: rgba(0, 210, 255, 0.45) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 210, 255, 0.2) !important;
 }
 
 .project-img-wrapper {
@@ -1877,8 +1888,10 @@ html, body {
 }
 
 .projects-area .project-btn-primary:hover {
-  background: #e2e8f0 !important;
+  background: #00d2ff !important;
   color: #000000 !important;
+  border-color: #00d2ff !important;
+  box-shadow: 0 6px 18px rgba(0, 210, 255, 0.45) !important;
   transform: translateY(-1px);
 }
 
@@ -1899,8 +1912,9 @@ html, body {
 }
 
 .projects-area .project-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.16) !important;
-  color: #ffffff !important;
+  background: rgba(0, 210, 255, 0.15) !important;
+  border-color: rgba(0, 210, 255, 0.45) !important;
+  color: #00d2ff !important;
 }
 
 /* ==========================================================================
@@ -2086,9 +2100,10 @@ html, body {
 }
 
 .contact-form-area .theme-btn:hover {
-  background: #e2e8f0 !important;
-  border-color: #e2e8f0 !important;
+  background: #00d2ff !important;
+  border-color: #00d2ff !important;
   color: #000000 !important;
+  box-shadow: 0 6px 20px rgba(0, 210, 255, 0.45) !important;
   transform: translateY(-1px);
 }
 
@@ -2130,8 +2145,8 @@ html, body {
 }
 
 .main-footer .footer-top h2 a:hover {
-  opacity: 0.8;
-  color: #ffffff !important;
+  color: #00d2ff !important;
+  text-shadow: 0 0 25px rgba(0, 210, 255, 0.45);
 }
 
 .main-footer p.copy-left-text {
@@ -2141,6 +2156,11 @@ html, body {
 .main-footer p.copy-left-text a {
   color: #ffffff !important;
   font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.main-footer p.copy-left-text a:hover {
+  color: #00d2ff !important;
 }
 
 .main-footer p.copy-right-text {
@@ -2157,4 +2177,26 @@ html, body {
 .progress-wrap:hover i {
   color: #00d2ff !important;
 }
+
+/* ==========================================================================
+   CUSTOM CURSOR & GLOBAL HOVER ACCENTS (ELECTRIC BLUE)
+   ========================================================================== */
+#magic-cursor #ball {
+  border: 2px solid rgba(0, 210, 255, 0.55) !important;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.25) !important;
+  background-color: rgba(0, 210, 255, 0.04) !important;
+  transition: width 0.22s ease, height 0.22s ease, margin 0.22s ease, opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+#magic-cursor #ball.hovered {
+  opacity: 1 !important;
+  width: 56px !important;
+  height: 56px !important;
+  margin-left: -28px !important;
+  margin-top: -28px !important;
+  border-color: #00d2ff !important;
+  background-color: rgba(0, 210, 255, 0.22) !important;
+  box-shadow: 0 0 24px rgba(0, 210, 255, 0.75), inset 0 0 14px rgba(0, 210, 255, 0.35) !important;
+}
+
 

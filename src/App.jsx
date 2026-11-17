@@ -56,7 +56,7 @@ export default function App() {
         {/* GHOST CURSOR FLUID SMOKE EFFECT (REACT BITS) */}
         <GhostCursor
           className="fullscreen-ghost-cursor"
-          color="#B497CF"
+          color="#00d2ff"
           size={80}
           trailLength={50}
           inertia={0.5}

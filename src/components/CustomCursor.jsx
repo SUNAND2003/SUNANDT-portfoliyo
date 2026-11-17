@@ -90,15 +90,19 @@ export default function CustomCursor() {
           position: 'fixed',
           left: 0,
           top: 0,
-          opacity: isVisible ? (isHovered ? 0.3 : 1) : 0,
+          opacity: isVisible ? 1 : 0,
           transform: 'translate3d(-100px, -100px, 0)',
           transformOrigin: 'center center',
-          transition: 'width 0.2s, height 0.2s, opacity 0.2s, border-color 0.2s',
-          width: isHovered ? '60px' : '40px',
-          height: isHovered ? '60px' : '40px',
-          marginLeft: isHovered ? '-30px' : '-20px',
-          marginTop: isHovered ? '-30px' : '-20px',
-          border: '2px solid rgba(255, 255, 255, 0.4)',
+          transition: 'width 0.22s ease, height 0.22s ease, margin 0.22s ease, opacity 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease',
+          width: isHovered ? '56px' : '38px',
+          height: isHovered ? '56px' : '38px',
+          marginLeft: isHovered ? '-28px' : '-19px',
+          marginTop: isHovered ? '-28px' : '-19px',
+          border: isHovered ? '2px solid #00d2ff' : '2px solid rgba(0, 210, 255, 0.55)',
+          backgroundColor: isHovered ? 'rgba(0, 210, 255, 0.22)' : 'rgba(0, 210, 255, 0.04)',
+          boxShadow: isHovered
+            ? '0 0 24px rgba(0, 210, 255, 0.75), inset 0 0 12px rgba(0, 210, 255, 0.35)'
+            : '0 0 10px rgba(0, 210, 255, 0.25)',
           borderRadius: '50%',
           pointerEvents: 'none'
         }}
