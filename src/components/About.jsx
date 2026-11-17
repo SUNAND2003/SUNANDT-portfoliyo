@@ -15,20 +15,21 @@ export default function About({ isStandalonePage = false }) {
           inset: 0,
           pointerEvents: 'none',
           zIndex: 0,
-          opacity: 0.7
+          opacity: 0.85
         }}
       >
         <Galaxy
           layers={3}
           density={1.6}
-          glowIntensity={0.35}
+          glowIntensity={0.5}
           starSize={1.1}
-          flareIntensity={0.6}
+          flareIntensity={0.8}
           starSpeed={0.3}
           mouseRepulsion={true}
           repulsionStrength={1.5}
-          twinkleIntensity={0.35}
-          dpr={0.7}
+          twinkleIntensity={0.4}
+          starColors={['#00d2ff', '#38bdf8', '#0077ff', '#ffffff']}
+          dpr={0.85}
           transparent={true}
           clickWarp={false}
         />

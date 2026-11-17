@@ -647,7 +647,7 @@ html, body {
   width: 115%;
   height: 115%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(30, 41, 59, 0.25) 40%, transparent 72%);
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.16) 0%, rgba(0, 119, 255, 0.08) 40%, transparent 72%);
   filter: blur(40px);
   pointer-events: none;
   z-index: 0;
