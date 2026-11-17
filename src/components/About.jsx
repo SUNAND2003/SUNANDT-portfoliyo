@@ -73,8 +73,8 @@ export default function About({ isStandalonePage = false }) {
               <div className="about-lanyard-wrapper">
                 <div className="about-photo-aura" aria-hidden="true" />
                 <Lanyard
-                  frontImage={personalInfo.aboutImage || '/assets/images/about/sunand-about-new.jpg'}
-                  backImage={personalInfo.aboutImage || '/assets/images/about/sunand-about-new.jpg'}
+                  frontImage={personalInfo.aboutImage || '/assets/images/about/sunand-id-card.jpg'}
+                  backImage={personalInfo.aboutImage || '/assets/images/about/sunand-id-card.jpg'}
                   imageFit="cover"
                   cardColor="#0d0f15"
                   orientation="portrait"
