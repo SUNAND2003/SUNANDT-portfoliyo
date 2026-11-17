@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo, counters, skillCategories } from '../data/portfolioData';
 import Counter from './Counter';
-import HoloCard from './HoloCard';
+import Lanyard from './Lanyard';
 import Galaxy from './Galaxy';
 
 export default function About({ isStandalonePage = false }) {
@@ -68,22 +68,33 @@ export default function About({ isStandalonePage = false }) {
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="position-relative text-center d-flex justify-content-center"
+              className="position-relative text-center d-flex flex-column align-items-center justify-content-center"
             >
-              <div className="about-photo-wrapper">
+              <div className="about-lanyard-wrapper">
                 <div className="about-photo-aura" aria-hidden="true" />
-                <HoloCard
-                  image={personalInfo.aboutImage || personalInfo.heroImage}
-                  alt={personalInfo.name}
-                  className="about-photo-card"
-                  holo={false}
-                  width={380}
-                  radius={24}
-                  tiltMax={16}
-                  hoverScale={1.05}
-                  idle={true}
-                  shadow={true}
+                <Lanyard
+                  frontImage={personalInfo.aboutImage || personalInfo.heroImage}
+                  backImage={personalInfo.aboutImage || personalInfo.heroImage}
+                  imageFit="cover"
+                  cardColor="#0d0f15"
+                  orientation="portrait"
+                  finish="holographic"
+                  size={0.68}
+                  strapLength={0.46}
+                  strapColor="#08090d"
+                  strapWidth={0.65}
+                  metal="silver"
+                  gravity={0.95}
+                  damping={0.48}
+                  elasticity={0.52}
+                  breeze={0.38}
+                  interactive={true}
+                  intro={true}
                 />
+              </div>
+              <div className="about-lanyard-badge">
+                <i className="ri-drag-move-fill"></i>
+                <span>Interactive 3D ID Card &bull; Drag or click to flip</span>
               </div>
             </motion.div>
           </div>
