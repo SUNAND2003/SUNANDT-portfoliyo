@@ -1,22 +1,26 @@
 /* ==========================================================================
-   SUNAND T - PROPER BLACK AND WHITE MONOCHROME THEME
-   TWO-TONE HIGH-CONTRAST DESIGN ARCHITECTURE:
-   - Light Sections: Pure Crisp White (#ffffff)
-   - Dark Sections: Pure Deep Black (#000000)
-   - Accents: Pure Monochrome (Black #000000 & White #ffffff)
+   SUNAND T - LUXURY ALL BLACK BACKGROUND & ALL WHITE TEXT MONOCHROME THEME
+   - Background: Pure Deep Black (#000000) Across Entire Site
+   - Text & Headings: Pure Crisp White (#ffffff) Across Entire Site
+   - Accents: High-Contrast Monochrome & Vibrant Neon Highlights
    ========================================================================== */
 
 :root {
   --theme-white: #ffffff;
   --theme-black: #000000;
-  --theme-dark: #070707;
-  --theme-card-dark: #0d0f12;
-  --theme-card-light: #ffffff;
+  --theme-dark: #050505;
+  --theme-card-dark: #0c0e14;
+  --theme-card-light: #0c0e14;
   --theme-silver: #E6EAEE;
-  --theme-muted-light: #4b5563;
+  --theme-muted-light: #94a3b8;
   --theme-muted-dark: #cbd5e1;
-  --glass-bg: rgba(10, 10, 10, 0.88);
+  --glass-bg: rgba(10, 10, 10, 0.92);
   --glass-border: rgba(255, 255, 255, 0.14);
+}
+
+html, body {
+  background-color: #000000 !important;
+  color: #ffffff !important;
 }
 
 /* Custom Scrollbar */
@@ -47,7 +51,7 @@
 }
 
 /* ==========================================================================
-   HEADER - PREVIOUS LOGO + BLACK "LET'S TALK" BUTTON + FLOATING PILL NAV
+   HEADER - LOGO + BLACK "LET'S TALK" BUTTON + FLOATING PILL NAV
    ========================================================================== */
 
 /* Never turn white/cream on scroll - stay transparent dark */
@@ -81,7 +85,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Left: Previous Logo ("Sunand") */
+/* Left: Logo ("Sunand") - Always Pure White */
 .logo-text {
   font-family: 'Oswald', sans-serif;
   font-size: 30px;
@@ -90,35 +94,17 @@
   text-decoration: none;
   display: inline-block;
   line-height: 1;
+  color: #ffffff !important;
   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
 }
 
-/* 1. At Normal Time (unscrolled / top of page) on light background: Logo is BLACK */
-.main-header.normal-header.on-light-top .logo-text {
-  color: #000000 !important;
-}
-
-.main-header.normal-header.on-light-top .logo-text:hover {
-  opacity: 0.75;
-  color: #000000 !important;
-}
-
-/* 2. When Scrolling (sticky header): Logo turns WHITE */
-.main-header.fixed-header .logo-text {
+.logo-text:hover {
+  opacity: 0.85;
   color: #ffffff !important;
 }
 
-.main-header.fixed-header .logo-text:hover {
-  opacity: 0.82;
-  color: #ffffff !important;
-}
-
-/* 3. On dark top pages when not scrolled (like /about, /experience): Logo is WHITE */
-.main-header.normal-header.on-dark-top .logo-text {
-  color: #ffffff !important;
-}
-
-/* Inside Mobile Drawer (always dark background): Logo is WHITE */
+.main-header.normal-header .logo-text,
+.main-header.fixed-header .logo-text,
 .exact-model-sidebar .logo-text {
   color: #ffffff !important;
 }
@@ -224,7 +210,7 @@
    MOBILE TOGGLE BUTTON & HIGH-END RESPONSIVE DRAWER
    ========================================================================== */
 
-/* Mobile Toggle Button */
+/* Mobile Toggle Button - Always White on Black */
 .main-header .sidebar-toggle-btn {
   font-size: 20px;
   width: 42px;
@@ -236,29 +222,12 @@
   cursor: pointer;
   transition: all 0.25s ease;
   z-index: 1002;
-}
-
-/* Normal time on light top: Black icon */
-.main-header.normal-header.on-light-top .sidebar-toggle-btn {
-  color: #000000 !important;
-  border: 1px solid rgba(0, 0, 0, 0.25) !important;
-  background: rgba(0, 0, 0, 0.05) !important;
-}
-
-.main-header.normal-header.on-light-top .sidebar-toggle-btn:hover {
-  background: rgba(0, 0, 0, 0.12) !important;
-}
-
-/* When scrolling (dark header) or on dark top: White icon */
-.main-header.fixed-header .sidebar-toggle-btn,
-.main-header.normal-header.on-dark-top .sidebar-toggle-btn {
   color: #ffffff !important;
   border: 1px solid rgba(255, 255, 255, 0.25) !important;
   background: rgba(255, 255, 255, 0.08) !important;
 }
 
-.main-header.fixed-header .sidebar-toggle-btn:hover,
-.main-header.normal-header.on-dark-top .sidebar-toggle-btn:hover {
+.main-header .sidebar-toggle-btn:hover {
   background: rgba(255, 255, 255, 0.18) !important;
 }
 
@@ -506,10 +475,11 @@
   margin: 0 auto;
 }
 
-/* Light Page Banner (for /services, /projects, /contact) */
+/* Page Banner (All Black Background & White Text) */
+.page-banner,
 .page-banner.page-banner-light {
-  background: #ffffff !important;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: #000000 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .page-banner.page-banner-light .section-badge {
@@ -518,9 +488,9 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #000000 !important;
-  background: rgba(0, 0, 0, 0.04) !important;
-  border: 1px solid rgba(0, 0, 0, 0.18) !important;
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 9999px;
   padding: 5px 14px;
   margin-bottom: 12px;
@@ -529,13 +499,13 @@
 .page-banner.page-banner-light .page-title {
   font-size: 44px;
   font-weight: 700;
-  color: #000000 !important;
+  color: #ffffff !important;
   margin-bottom: 12px;
 }
 
 .page-banner.page-banner-light .page-subtitle {
   font-size: 16px;
-  color: #4b5563 !important;
+  color: #cbd5e1 !important;
   max-width: 650px;
   margin: 0 auto;
 }
@@ -548,47 +518,14 @@
 }
 
 /* ==========================================================================
-   SECTION TITLES & BADGES (PROPER BLACK AND WHITE)
+   SECTION TITLES & BADGES (ALL BLACK BACKGROUND & ALL WHITE TEXT)
    ========================================================================== */
 
-/* Light Sections: Services, Projects, Contact, Hero */
 .section-black-title h2,
+.section-white-title h2,
 .services-area .section-title h2,
 .projects-area .section-title h2,
-.contact-area .section-title h2 {
-  font-size: 38px;
-  font-weight: 700;
-  color: #000000 !important;
-  margin-bottom: 12px;
-}
-
-.services-area .section-badge,
-.projects-area .section-badge,
-.contact-area .section-badge {
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #000000 !important;
-  background: rgba(0, 0, 0, 0.04) !important;
-  border: 1px solid rgba(0, 0, 0, 0.18) !important;
-  border-radius: 9999px;
-  padding: 5px 14px;
-  margin-bottom: 8px;
-}
-
-.services-area .section-desc,
-.projects-area .section-desc,
-.contact-area .section-desc {
-  color: #4b5563 !important;
-  max-width: 600px;
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-/* Dark Sections: About, Experience, Page Banners */
-.section-white-title h2,
+.contact-area .section-title h2,
 .about-area .section-title h2,
 .experience-area .section-title h2 {
   font-size: 38px;
@@ -597,6 +534,9 @@
   margin-bottom: 12px;
 }
 
+.services-area .section-badge,
+.projects-area .section-badge,
+.contact-area .section-badge,
 .about-area .section-badge,
 .experience-area .section-badge {
   display: inline-block;
@@ -605,13 +545,16 @@
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #ffffff !important;
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 9999px;
   padding: 5px 14px;
   margin-bottom: 8px;
 }
 
+.services-area .section-desc,
+.projects-area .section-desc,
+.contact-area .section-desc,
 .about-area .section-desc,
 .experience-area .section-desc {
   color: #cbd5e1 !important;
@@ -621,24 +564,26 @@
 }
 
 /* ==========================================================================
-   HERO SECTION (PURE WHITE #ffffff)
+   HERO SECTION (PURE DEEP BLACK #000000)
    ========================================================================== */
 .main-hero-area {
-  background: #ffffff !important;
+  background: #000000 !important;
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-content h2 {
-  color: #000000 !important;
+  color: #ffffff !important;
 }
 
 .hero-content p {
-  color: #4b5563 !important;
+  color: #cbd5e1 !important;
 }
 
 .hero-content .theme-btn {
-  background: #000000 !important;
-  color: #ffffff !important;
-  border: 1px solid #000000 !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ffffff !important;
   border-radius: 9999px !important;
   padding: 12px 30px !important;
   font-weight: 600 !important;
@@ -650,6 +595,19 @@
   color: #ffffff !important;
   border-color: #27272a !important;
   transform: translateY(-2px);
+}
+
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff !important;
 }
 
 /* ==========================================================================
@@ -1072,12 +1030,12 @@
 }
 
 /* ==========================================================================
-   ENHANCED SERVICES SECTION WITH INTERACTIVE ANIMATIONS
+   ENHANCED SERVICES SECTION WITH INTERACTIVE ANIMATIONS (PURE BLACK #000000)
    ========================================================================== */
 .services-area {
   position: relative;
   overflow: hidden;
-  background: #ffffff !important;
+  background: #000000 !important;
 }
 
 /* Ambient Floating Glow Orbs in Background */
@@ -1140,14 +1098,14 @@
 
 /* Modern Bento Service Card with Spotlight & Kinetic Animation */
 .modern-service-card {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: #0c0e14 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 24px;
   padding: 38px 32px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
               border-color 0.4s ease;
@@ -1190,7 +1148,7 @@
 
 .modern-service-card:hover {
   border-color: rgba(34, 197, 94, 0.4) !important;
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.08), 0 0 25px rgba(34, 197, 94, 0.15) !important;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(34, 197, 94, 0.15) !important;
 }
 
 .modern-service-card:hover::before {
@@ -1215,13 +1173,14 @@
   width: 54px;
   height: 54px;
   border-radius: 16px;
-  background: #000000 !important;
+  background: #141822 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   color: #ffffff !important;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 25px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
               box-shadow 0.35s ease,
               color 0.3s ease;
@@ -1239,7 +1198,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: #000000 !important;
+  color: #ffffff !important;
   transition: color 0.3s ease;
 }
 
@@ -1251,16 +1210,16 @@
   font-size: 13px;
   font-family: 'Oswald', sans-serif;
   font-weight: 600;
-  color: #9ca3af !important;
+  color: #71717a !important;
 }
 
 .service-arrow-circle {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background: #f8f9fa;
-  color: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #141822;
+  color: #ffffff !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1288,7 +1247,7 @@
 .service-card-heading {
   font-size: 24px !important;
   font-weight: 700 !important;
-  color: #000000 !important;
+  color: #ffffff !important;
   margin-bottom: 8px;
   line-height: 1.25;
   transition: color 0.25s ease;
@@ -1297,7 +1256,7 @@
 .service-card-short {
   font-size: 14.5px;
   font-weight: 600;
-  color: #1e293b !important;
+  color: #cbd5e1 !important;
   margin-bottom: 12px;
   line-height: 1.5;
 }
@@ -1305,7 +1264,7 @@
 .service-card-desc {
   font-size: 14px;
   line-height: 1.65;
-  color: #4b5563 !important;
+  color: #94a3b8 !important;
   margin-bottom: 0;
 }
 
@@ -1313,7 +1272,7 @@
 .service-deliverables {
   margin-top: 18px;
   padding-top: 18px;
-  border-top: 1px dashed rgba(0, 0, 0, 0.12);
+  border-top: 1px dashed rgba(255, 255, 255, 0.12);
   position: relative;
   z-index: 4;
 }
@@ -1331,29 +1290,29 @@
   font-size: 12px;
   font-weight: 500;
   padding: 6px 12px;
-  background: #f8f9fa;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 9999px;
-  color: #000000 !important;
+  color: #ffffff !important;
   transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .modern-service-card:hover .deliverable-tag {
-  border-color: rgba(0, 0, 0, 0.18);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .deliverable-tag:hover {
-  background: #000000 !important;
-  color: #ffffff !important;
-  border-color: #000000 !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
   transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 .deliverable-check {
   font-size: 13px;
   font-weight: 700;
-  color: #000000;
+  color: #22c55e;
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
@@ -1362,7 +1321,7 @@
 }
 
 .deliverable-tag:hover .deliverable-check {
-  color: #22c55e !important;
+  color: #000000 !important;
 }
 
 /* Service Card Footer */
@@ -1379,7 +1338,7 @@
   gap: 6px;
   font-size: 13.5px;
   font-weight: 600;
-  color: #000000 !important;
+  color: #ffffff !important;
   text-decoration: none;
   transition: all 0.25s ease;
 }
@@ -1489,12 +1448,12 @@
   align-items: center;
   gap: 8px;
   padding: 8px 18px;
-  background: #f8f9fa;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
   border-radius: 9999px;
   font-size: 13px;
   font-weight: 600;
-  color: #000000;
+  color: #ffffff !important;
 }
 
 .badge-bullet {
@@ -1508,25 +1467,27 @@
 }
 
 /* ==========================================================================
-   PROJECTS SECTION (PURE WHITE #ffffff)
+   PROJECTS SECTION (PURE DEEP BLACK #000000)
    ========================================================================== */
 .projects-area {
-  background: #ffffff !important;
+  background: #000000 !important;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Projects Controls Bar (Category Filter + Stacking/Grid Toggle) */
 .projects-controls-bar {
   padding-bottom: 24px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .view-mode-toggle {
   display: inline-flex;
   align-items: center;
-  background: #f4f4f5;
+  background: #0d0f14;
   padding: 4px;
   border-radius: 9999px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   gap: 2px;
 }
 
@@ -1537,7 +1498,7 @@
   border-radius: 9999px;
   border: none;
   background: transparent;
-  color: #71717a;
+  color: #94a3b8;
   cursor: pointer;
   transition: all 0.2s ease;
   display: inline-flex;
@@ -1572,19 +1533,19 @@
 }
 
 .stacking-card-inner {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  background: #0c0e14 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 24px;
   padding: 44px;
-  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7);
   transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   position: relative;
   overflow: hidden;
 }
 
 .stacking-card-wrapper:hover .stacking-card-inner {
-  border-color: #000000 !important;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9) !important;
 }
 
 /* Left Card Details */
@@ -1599,7 +1560,7 @@
   font-family: 'Oswald', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #000000;
+  color: #ffffff;
   letter-spacing: 1px;
 }
 
@@ -1609,16 +1570,16 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
   padding: 4px 12px;
-  background: #f4f4f5;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
-  color: #000000;
+  color: #ffffff;
 }
 
 .stacking-card-title {
   font-size: 32px !important;
   font-weight: 700 !important;
-  color: #000000 !important;
+  color: #ffffff !important;
   margin-bottom: 14px;
   line-height: 1.25;
 }
@@ -1626,7 +1587,7 @@
 .stacking-card-desc {
   font-size: 15.5px;
   line-height: 1.7;
-  color: #4b5563 !important;
+  color: #cbd5e1 !important;
   margin-bottom: 24px;
   max-width: 540px;
 }
@@ -1642,15 +1603,15 @@
   font-size: 12px;
   font-weight: 500;
   padding: 5px 12px;
-  background: #f8f9fa;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 6px;
-  color: #000000 !important;
+  color: #ffffff !important;
   transition: all 0.2s ease;
 }
 
 .stacking-card-wrapper:hover .stacking-tag {
-  border-color: rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .stacking-card-actions {
@@ -1665,21 +1626,21 @@
   align-items: center;
   gap: 8px;
   padding: 12px 26px;
-  background: #000000 !important;
-  color: #ffffff !important;
+  background: #ffffff !important;
+  color: #000000 !important;
   font-size: 14px;
   font-weight: 600;
   border-radius: 9999px;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
   transition: all 0.25s ease;
 }
 
 .stacking-btn-primary:hover {
-  background: #27272a !important;
-  color: #ffffff !important;
+  background: #e2e8f0 !important;
+  color: #000000 !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.25);
 }
 
 .stacking-btn-secondary {
@@ -1687,9 +1648,9 @@
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  background: transparent !important;
-  border: 1px solid rgba(0, 0, 0, 0.25) !important;
-  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
   font-size: 14px;
   font-weight: 600;
   border-radius: 9999px;
@@ -1698,18 +1659,17 @@
 }
 
 .stacking-btn-secondary:hover {
-  background: #f4f4f5 !important;
-  border-color: #000000 !important;
-  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
 }
 
 /* Right Browser Mockup */
 .browser-mockup {
   border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: #ffffff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #11141b;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   transition: transform 0.4s ease;
 }
 
@@ -1722,8 +1682,8 @@
   align-items: center;
   gap: 6px;
   padding: 10px 14px;
-  background: #f4f4f5;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: #161a23;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .browser-dot {
@@ -1740,11 +1700,11 @@
 .browser-address-bar {
   margin-left: 8px;
   font-size: 11px;
-  color: #71717a;
-  background: #ffffff;
+  color: #cbd5e1;
+  background: #0d0f14;
   padding: 3px 12px;
   border-radius: 9999px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   max-width: 200px;
   white-space: nowrap;
   overflow: hidden;
@@ -1788,20 +1748,21 @@
 
 .projects-area .filter-tab-btn {
   padding: 9px 22px;
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.18) !important;
-  color: #000000 !important;
+  background: #0c0e14 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
   font-size: 14px;
   font-weight: 500;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .projects-area .filter-tab-btn:hover {
-  background: #f4f4f5 !important;
-  border-color: #000000 !important;
+  background: #181d26 !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
 }
 
 .projects-area .filter-tab-btn.active {
@@ -1814,11 +1775,11 @@
 
 /* Project Cards in Projects Area */
 .projects-area .modern-project-card {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.09) !important;
+  background: #0c0e14 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
@@ -1827,8 +1788,8 @@
 
 .projects-area .modern-project-card:hover {
   transform: translateY(-8px);
-  border-color: #000000 !important;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8) !important;
 }
 
 .project-img-wrapper {
@@ -1873,14 +1834,14 @@
 .projects-area .project-card-title {
   font-size: 20px;
   font-weight: 700;
-  color: #000000 !important;
+  color: #ffffff !important;
   margin-bottom: 10px;
 }
 
 .projects-area .project-card-desc {
   font-size: 14px;
   line-height: 1.6;
-  color: #4b5563 !important;
+  color: #cbd5e1 !important;
   margin-bottom: 18px;
   flex-grow: 1;
 }
@@ -1895,10 +1856,10 @@
 .projects-area .project-tag {
   font-size: 11px;
   padding: 3px 9px;
-  background: rgba(0, 0, 0, 0.05) !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 6px;
-  color: #000000 !important;
+  color: #ffffff !important;
 }
 
 .project-actions {
@@ -1913,8 +1874,8 @@
   justify-content: center;
   gap: 6px;
   padding: 10px 14px;
-  background: #000000 !important;
-  color: #ffffff !important;
+  background: #ffffff !important;
+  color: #000000 !important;
   font-size: 13px;
   font-weight: 600;
   border-radius: 6px;
@@ -1923,8 +1884,8 @@
 }
 
 .projects-area .project-btn-primary:hover {
-  background: #27272a !important;
-  color: #ffffff !important;
+  background: #e2e8f0 !important;
+  color: #000000 !important;
   transform: translateY(-1px);
 }
 
@@ -1934,9 +1895,9 @@
   justify-content: center;
   gap: 6px;
   padding: 10px 14px;
-  background: transparent !important;
-  border: 1px solid rgba(0, 0, 0, 0.25) !important;
-  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
   font-size: 13px;
   font-weight: 600;
   border-radius: 6px;
@@ -1945,58 +1906,61 @@
 }
 
 .projects-area .project-btn-secondary:hover {
-  background: rgba(0, 0, 0, 0.06) !important;
-  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
 }
 
 /* ==========================================================================
-   CONTACT SECTION (PURE WHITE #ffffff)
+   CONTACT SECTION (PURE DEEP BLACK #000000)
    ========================================================================== */
 .contact-area {
-  background: #ffffff !important;
+  background: #000000 !important;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Single Contact Info Items */
 .contact-area .single-contact h2 {
   font-size: 18px !important;
   font-weight: 600 !important;
-  color: #000000 !important;
+  color: #ffffff !important;
   margin-top: 15px;
   margin-bottom: 5px;
 }
 
 .contact-area .single-contact p {
-  color: #4b5563 !important;
+  color: #cbd5e1 !important;
   font-size: 15px;
 }
 
 .contact-area .single-contact a {
-  color: #000000 !important;
+  color: #ffffff !important;
   font-weight: 500;
 }
 
 .contact-area .single-contact a:hover {
-  color: #000000 !important;
+  color: #22c55e !important;
   text-decoration: underline;
 }
 
 .contact-area .single-contact .circle-btn {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.18) !important;
-  color: #000000 !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  background: #0c0e14 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease;
 }
 
 .contact-area .single-contact .circle-btn:hover {
-  background: #000000 !important;
-  color: #ffffff !important;
+  background: #22c55e !important;
+  color: #000000 !important;
+  border-color: #22c55e !important;
 }
 
 .contact-area .about-social a {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.15) !important;
-  color: #000000 !important;
+  background: #0c0e14 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
   width: 42px;
   height: 42px;
   display: inline-flex;
@@ -2007,29 +1971,29 @@
 }
 
 .contact-area .about-social a:hover {
-  background: #000000 !important;
-  color: #ffffff !important;
-  border-color: #000000 !important;
+  background: #22c55e !important;
+  color: #000000 !important;
+  border-color: #22c55e !important;
 }
 
-/* Modern Clean Contact Form Card on Pure White Background */
+/* Modern Clean Contact Form Card on Pure Black Background */
 .modern-contact-card {
-  background: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  background: #0c0e14 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
   border-radius: 20px;
   padding: 36px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
 .contact-form-title {
-  color: #000000 !important;
+  color: #ffffff !important;
   font-size: 22px !important;
   font-weight: 700 !important;
   margin-bottom: 24px;
 }
 
 .contact-form-area .form-group label {
-  color: #000000 !important;
+  color: #ffffff !important;
   font-size: 13.5px !important;
   font-weight: 600 !important;
   text-transform: uppercase !important;
@@ -2039,9 +2003,9 @@
 }
 
 .contact-form-area .form-group .form-control {
-  background: #f8f9fa !important;
-  border: 1px solid rgba(0, 0, 0, 0.15) !important;
-  color: #000000 !important;
+  background: #14171d !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
   border-radius: 8px !important;
   font-size: 15px !important;
   padding: 14px 18px !important;
@@ -2049,18 +2013,18 @@
 }
 
 .contact-form-area .form-group .form-control:focus {
-  background: #ffffff !important;
-  border-color: #000000 !important;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08) !important;
+  background: #181d26 !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12) !important;
 }
 
 .contact-form-area .form-group .form-control::placeholder {
-  color: #888888 !important;
+  color: #71717a !important;
   opacity: 1 !important;
 }
 
 .contact-form-area .form-group .for-icon {
-  color: #000000 !important;
+  color: #cbd5e1 !important;
   position: absolute;
   top: 42px !important;
   right: 20px !important;
@@ -2068,9 +2032,9 @@
 }
 
 .contact-form-area .theme-btn {
-  background: #000000 !important;
-  color: #ffffff !important;
-  border: 1px solid #000000 !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ffffff !important;
   border-radius: 8px !important;
   padding: 14px 28px !important;
   font-weight: 600 !important;
@@ -2078,9 +2042,9 @@
 }
 
 .contact-form-area .theme-btn:hover {
-  background: #27272a !important;
-  border-color: #27272a !important;
-  color: #ffffff !important;
+  background: #e2e8f0 !important;
+  border-color: #e2e8f0 !important;
+  color: #000000 !important;
   transform: translateY(-1px);
 }
 
