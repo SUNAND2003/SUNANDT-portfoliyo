@@ -1948,48 +1948,6 @@ body {
   font-weight: 600;
 }
 
-@media (max-width: 767px) {
-  .projects-controls-bar {
-    margin-bottom: 28px !important;
-  }
-
-  .projects-controls-bar .category-filter-container {
-    width: 100% !important;
-    display: block !important;
-    overflow: hidden;
-  }
-
-  .category-filter-wrap {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    -ms-overflow-style: none !important;
-    justify-content: flex-start !important;
-    gap: 8px !important;
-    padding: 4px 16px 8px 16px !important;
-    margin: 0 -12px !important;
-    width: calc(100% + 24px) !important;
-    scroll-snap-type: x proximity;
-  }
-
-  .category-filter-wrap::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-  }
-
-  .projects-area .filter-tab-btn {
-    flex-shrink: 0 !important;
-    white-space: nowrap !important;
-    padding: 7px 15px !important;
-    font-size: 13px !important;
-    scroll-snap-align: start;
-  }
-}
-
 /* Project Cards in Projects Area */
 .projects-area .modern-project-card {
   background: #0c0e14 !important;
