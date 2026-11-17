@@ -17,6 +17,18 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 
 export default function App() {
+  const [isLaptop, setIsLaptop] = React.useState(
+    () => typeof window !== 'undefined' && window.innerWidth >= 992 && !window.matchMedia('(pointer: coarse)').matches
+  );
+
+  useEffect(() => {
+    const checkLaptop = () => {
+      setIsLaptop(window.innerWidth >= 992 && !window.matchMedia('(pointer: coarse)').matches);
+    };
+    window.addEventListener('resize', checkLaptop);
+    return () => window.removeEventListener('resize', checkLaptop);
+  }, []);
+
   // Support direct hash or path entry (e.g. /#contact or /#projects)
   useEffect(() => {
     const hash = window.location.hash || window.location.pathname;
@@ -53,22 +65,24 @@ export default function App() {
         {/* FLOATING SCROLL TO TOP */}
         <ScrollToTop />
 
-        {/* GHOST CURSOR FLUID SMOKE EFFECT (REACT BITS) */}
-        <GhostCursor
-          className="fullscreen-ghost-cursor"
-          color="#00d2ff"
-          size={80}
-          trailLength={50}
-          inertia={0.5}
-          turbulence={0.5}
-          drift={0.3}
-          bloomStrength={0.6}
-          grainIntensity={0.05}
-          zIndex={999998}
-        />
-
-        {/* CUSTOM CURSOR */}
-        <CustomCursor />
+        {/* MOUSE HOVER CURSOR ANIMATIONS (LAPTOP VIEW ONLY) */}
+        {isLaptop && (
+          <>
+            <GhostCursor
+              className="fullscreen-ghost-cursor"
+              color="#00d2ff"
+              size={80}
+              trailLength={50}
+              inertia={0.5}
+              turbulence={0.5}
+              drift={0.3}
+              bloomStrength={0.6}
+              grainIntensity={0.05}
+              zIndex={999998}
+            />
+            <CustomCursor />
+          </>
+        )}
 
         {/* FLOATING NAVBAR WITH SCROLLSPY */}
         <Navbar />

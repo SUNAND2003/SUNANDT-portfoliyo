@@ -435,6 +435,7 @@ const GhostCursor = ({
     const canvas = canvasRef.current;
     const parent = container?.parentElement;
     if (!container || !canvas || !parent) return;
+    if (window.innerWidth < 992 || window.matchMedia('(pointer: coarse)').matches) return;
 
     const previousPosition = parent.style.position;
     const reposition = getComputedStyle(parent).position === 'static';
@@ -935,6 +936,10 @@ const GhostCursor = ({
   }, [generation]);
 
   const blend = mixBlendMode ?? (light ? 'normal' : 'screen');
+
+  if (typeof window !== 'undefined' && (window.innerWidth < 992 || window.matchMedia('(pointer: coarse)').matches)) {
+    return null;
+  }
 
   return (
     <div ref={containerRef} className={`ghost-cursor ${className}`.trim()} style={{ zIndex, ...style }}>

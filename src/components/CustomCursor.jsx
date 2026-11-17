@@ -8,8 +8,8 @@ export default function CustomCursor() {
   const ballPos = useRef({ x: -100, y: -100 });
 
   useEffect(() => {
-    // Only enable custom cursor for non-touch devices
-    if (window.matchMedia('(pointer: coarse)').matches) return;
+    // Only enable custom cursor for laptop view (>= 992px) with fine pointer
+    if (window.innerWidth < 992 || window.matchMedia('(pointer: coarse)').matches) return;
 
     const handleMouseMove = (e) => {
       mousePos.current = { x: e.clientX, y: e.clientY };
@@ -67,7 +67,7 @@ export default function CustomCursor() {
     };
   }, [isVisible]);
 
-  if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) {
+  if (typeof window !== 'undefined' && (window.innerWidth < 992 || window.matchMedia('(pointer: coarse)').matches)) {
     return null;
   }
 

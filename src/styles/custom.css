@@ -2309,4 +2309,42 @@ html, body {
   box-shadow: 0 0 24px rgba(0, 210, 255, 0.75), inset 0 0 14px rgba(0, 210, 255, 0.35) !important;
 }
 
+/* ==========================================================================
+   MOBILE RESPONSIVE: DISABLE MOUSE HOVER ANIMATIONS & CURSORS
+   (ONLY ENABLED IN LAPTOP / DESKTOP VIEW >= 992px)
+   ========================================================================== */
+@media (max-width: 991px), (hover: none), (pointer: coarse) {
+  /* Hide custom cursor and ghost cursor elements on mobile */
+  #magic-cursor,
+  #magic-cursor *,
+  #ball,
+  .fullscreen-ghost-cursor,
+  .ghost-cursor-canvas,
+  .ghost-cursor-container {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Reset hover transforms and animations on mobile responsive view */
+  .stacking-card-wrapper:hover .stacking-card-inner,
+  .modern-project-card:hover,
+  .skill-box-card:hover,
+  .timeline-card:hover,
+  .talk-pill-btn:hover,
+  .theme-btn:hover,
+  .services-callout-banner:hover,
+  .logo-text:hover,
+  .about-photo-wrapper:hover,
+  .browser-mockup:hover {
+    transform: none !important;
+  }
+
+  .stacking-card-wrapper:hover .browser-mockup,
+  .stacking-card-wrapper:hover .browser-mockup-body img {
+    transform: none !important;
+  }
+}
+
 
