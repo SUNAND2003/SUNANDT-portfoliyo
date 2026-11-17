@@ -4,6 +4,7 @@ import ScrollProgress from './components/ScrollProgress';
 import ScrollColorController from './components/ScrollColorController';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
+import GhostCursor from './components/GhostCursor';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -55,6 +56,20 @@ export default function App() {
 
         {/* FLOATING SCROLL TO TOP */}
         <ScrollToTop />
+
+        {/* GHOST CURSOR FLUID SMOKE EFFECT (REACT BITS) */}
+        <GhostCursor
+          className="fullscreen-ghost-cursor"
+          color="#B497CF"
+          size={80}
+          trailLength={50}
+          inertia={0.5}
+          turbulence={0.5}
+          drift={0.3}
+          bloomStrength={0.6}
+          grainIntensity={0.05}
+          zIndex={999998}
+        />
 
         {/* CUSTOM CURSOR */}
         <CustomCursor />
