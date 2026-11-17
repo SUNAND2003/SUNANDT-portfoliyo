@@ -97,7 +97,7 @@ export default function About({ isStandalonePage = false }) {
               className="ps-lg-4"
             >
               <div className="hero-experience-badge">
-                <i className="ri-briefcase-4-line"></i> Senior Full Stack Developer
+                <i className="ri-briefcase-4-line"></i> Full Stack Developer
               </div>
 
               <h3 className="text-white mb-3" style={{ fontSize: '28px', fontWeight: 600 }}>

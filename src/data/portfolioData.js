@@ -1,9 +1,9 @@
 export const personalInfo = {
   name: "Sunand T",
-  role: "Senior Full Stack Developer & MERN Specialist",
+  role: "Full Stack Developer & MERN Specialist",
   tagline: "Crafting scalable, high-performance web applications and sleek digital experiences.",
-  shortIntro: "Hi, I’m Sunand T, a passionate Senior Full Stack Developer and Web Designer specializing in the MERN stack with proven experience creating responsive, high-impact web applications.",
-  bio: "I am a dedicated Senior Full Stack Developer with hands-on industry experience building modern, scalable web applications from conception to production deployment. Currently working as a Senior Full Stack Developer at Hexa Branding, and previously at Bloombiz Creatives. I blend clean backend architecture with polished, intuitive user interfaces.",
+  shortIntro: "Hi, I’m Sunand T, a passionate Full Stack Developer and Web Designer specializing in the MERN stack with proven experience creating responsive, high-impact web applications.",
+  bio: "I am a dedicated Full Stack Developer with hands-on industry experience building modern, scalable web applications from conception to production deployment. Currently working as a Full Stack Developer at Hexa Branding, and previously at Bloombiz Creatives. I blend clean backend architecture with polished, intuitive user interfaces.",
   cvUrl: "/assets/images/SUNAND_T_CV (1).pdf",
   heroImage: "/assets/images/about/WhatsApp Image 2025-08-08 at 12.05.22_949dd62e.jpg",
   aboutImage: "/assets/images/about/sunand-about-new.jpg",
@@ -51,7 +51,7 @@ export const workExperience = [
   {
     id: "exp-1",
     company: "Hexa Branding",
-    role: "Senior Full Stack Developer",
+    role: "Full Stack Developer",
     period: "1 Year (Current)",
     status: "Current Role",
     location: "Calicut, Kerala",
