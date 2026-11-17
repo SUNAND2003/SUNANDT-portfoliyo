@@ -15,15 +15,21 @@ export default function Projects({ isStandalonePage = false }) {
         {!isStandalonePage && (
           <motion.div
             className="row mb-40"
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-20px' }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="col-12 text-center">
-              <span className="section-badge">
-                <i className="ri-folder-open-line me-1"></i> Selected Works
-              </span>
+              <motion.span
+                className="section-badge"
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.1 }}
+              >
+                <i className="ri-folder-open-line me-1" style={{ color: '#00d2ff' }}></i> Selected Works
+              </motion.span>
               <div className="section-title section-black-title">
                 <h2>Featured Projects</h2>
               </div>
@@ -37,10 +43,10 @@ export default function Projects({ isStandalonePage = false }) {
         {/* CONTROLS BAR: CATEGORY FILTER TABS */}
         <motion.div
           className="projects-controls-bar mb-50"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-20px' }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="d-flex align-items-center justify-content-center flex-wrap gap-3">
             {/* CATEGORY TABS */}

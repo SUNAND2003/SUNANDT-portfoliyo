@@ -97,9 +97,23 @@ export default function Contact({ isStandalonePage = false }) {
 
       <div className="container position-relative" style={{ zIndex: 1 }}>
         {!isStandalonePage && (
-          <div className="row mb-50">
+          <motion.div
+            className="row mb-50"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="col-12 text-center">
-              <span className="section-badge">Get In Touch</span>
+              <motion.span
+                className="section-badge"
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.1 }}
+              >
+                Get In Touch
+              </motion.span>
               <div className="section-title section-black-title">
                 <h2>Let's Work Together</h2>
               </div>
@@ -107,16 +121,16 @@ export default function Contact({ isStandalonePage = false }) {
                 Have a project idea, contract opportunity, or want to discuss a full-stack role? Send a message and let's connect!
               </p>
             </div>
-          </div>
+          </motion.div>
         )}
 
         <div className="row">
           <div className="col-lg-4 mb-5 mb-lg-0">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -60 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="contact-content-part"
             >
               {/* ADDRESS */}
@@ -209,10 +223,10 @@ export default function Contact({ isStandalonePage = false }) {
           {/* CONTACT FORM */}
           <div className="col-lg-8">
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="contact-form contact-form-area modern-contact-card"
             >
               <h3 className="contact-form-title mb-4">

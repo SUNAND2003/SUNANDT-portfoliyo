@@ -10,9 +10,9 @@ export default function Hero() {
           <div className="col-lg-12">
             <motion.div
               className="hero-content text-center"
-              initial={{ opacity: 0, y: 35 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, y: 40, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             >
               <h2>{personalInfo.name}</h2>
             </motion.div>
@@ -22,9 +22,10 @@ export default function Hero() {
         <div className="row align-items-center">
           <div className="col-lg-3 pt-30 d-none d-lg-block">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
+              transition={{ duration: 0.75, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ scale: 1.03 }}
               className="hero-badge-pill"
             >
               <span className="badge-bullet"></span>
@@ -35,9 +36,10 @@ export default function Hero() {
           <div className="col-lg-6">
             <motion.div
               className="hero-image"
-              initial={{ opacity: 0, scale: 0.92, rotate: 0 }}
+              initial={{ opacity: 0, scale: 0.88, rotate: 0 }}
               animate={{ opacity: 1, scale: 1, rotate: -10 }}
-              transition={{ duration: 0.85, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.9, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ scale: 1.03, rotate: -8, transition: { duration: 0.4 } }}
             >
               <img
                 src={personalInfo.heroImage}
@@ -49,9 +51,9 @@ export default function Hero() {
           <div className="col-lg-3 pt-30">
             <motion.div
               className="hero-content"
-              initial={{ opacity: 0, x: 25 }}
+              initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.75, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             >
               <p>{personalInfo.shortIntro}</p>
               <motion.a

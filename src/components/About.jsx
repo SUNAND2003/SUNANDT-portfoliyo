@@ -37,23 +37,37 @@ export default function About({ isStandalonePage = false }) {
 
       <div className="container position-relative" style={{ zIndex: 1 }}>
         {!isStandalonePage && (
-          <div className="row mb-50">
+          <motion.div
+            className="row mb-50"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="col-12 text-center">
-              <span className="section-badge">Get To Know Me</span>
+              <motion.span
+                className="section-badge"
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.1 }}
+              >
+                Get To Know Me
+              </motion.span>
               <div className="section-title section-white-title">
                 <h2>About Me</h2>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
         <div className="row align-items-center mb-60">
           <div className="col-lg-5 mb-4 mb-lg-0">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, x: -60, scale: 0.95 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="position-relative text-center d-flex justify-content-center"
             >
               <div className="about-photo-wrapper">
@@ -76,10 +90,10 @@ export default function About({ isStandalonePage = false }) {
 
           <div className="col-lg-7">
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="ps-lg-4"
             >
               <div className="hero-experience-badge">
@@ -101,7 +115,14 @@ export default function About({ isStandalonePage = false }) {
               {/* COUNTERS */}
               <div className="hero-counter-area d-flex justify-content-between flex-wrap gap-3 mt-4 pt-3 border-top border-secondary border-opacity-25">
                 {counters.map((item, idx) => (
-                  <div key={idx} className="counter-item counter-text-wrap">
+                  <motion.div
+                    key={idx}
+                    className="counter-item counter-text-wrap"
+                    initial={{ opacity: 0, y: 25 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.2 + idx * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  >
                     <Counter
                       stop={item.value}
                       speed={2200}
@@ -109,7 +130,7 @@ export default function About({ isStandalonePage = false }) {
                       className="count-text plus"
                     />
                     <span className="counter-title">{item.title}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
@@ -118,39 +139,50 @@ export default function About({ isStandalonePage = false }) {
 
         {/* SKILLS MATRIX */}
         <div className="row mt-50">
-          <div className="col-12 mb-30 text-center">
+          <motion.div
+            className="col-12 mb-30 text-center"
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
             <h3 className="text-white mb-2" style={{ fontSize: '24px' }}>
               Technical Expertise & Tools
             </h3>
             <p className="text-muted small">
               Technologies and libraries I use daily to build production-grade web applications.
             </p>
-          </div>
+          </motion.div>
 
-          {skillCategories.map((cat, idx) => (
-            <div key={cat.name} className="col-lg-4 col-md-6 mb-4">
-              <motion.div
-                className="skill-box-card"
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-              >
-                <div className="skill-category-title">
-                  <i className="ri-code-s-slash-line text-primary" style={{ color: '#00d2ff' }}></i>
-                  {cat.name}
-                </div>
-                <div className="skill-grid">
-                  {cat.skills.map((skill) => (
-                    <div key={skill.name} className="skill-badge-item">
-                      <i className={skill.icon}></i>
-                      <span className="skill-badge-name">{skill.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          ))}
+          {skillCategories.map((cat, idx) => {
+            const xOffset = idx === 0 ? -50 : idx === 2 ? 50 : 0;
+            const yOffset = idx === 1 ? 40 : 20;
+            return (
+              <div key={cat.name} className="col-lg-4 col-md-6 mb-4">
+                <motion.div
+                  className="skill-box-card"
+                  initial={{ opacity: 0, x: xOffset, y: yOffset }}
+                  whileInView={{ opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.65, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                >
+                  <div className="skill-category-title">
+                    <i className="ri-code-s-slash-line text-primary" style={{ color: '#00d2ff' }}></i>
+                    {cat.name}
+                  </div>
+                  <div className="skill-grid">
+                    {cat.skills.map((skill) => (
+                      <div key={skill.name} className="skill-badge-item">
+                        <i className={skill.icon}></i>
+                        <span className="skill-badge-name">{skill.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

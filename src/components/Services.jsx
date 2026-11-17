@@ -122,18 +122,18 @@ export default function Services({ isStandalonePage = false }) {
         {!isStandalonePage && (
           <motion.div
             className="row mb-50"
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="col-12 text-center">
               <motion.span
                 className="section-badge"
-                initial={{ scale: 0.9, opacity: 0 }}
+                initial={{ scale: 0.85, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4 }}
+                transition={{ duration: 0.45, delay: 0.1 }}
               >
                 <i className="ri-flashlight-line me-1" style={{ color: '#00d2ff' }}></i> Capabilities & Expertise
               </motion.span>

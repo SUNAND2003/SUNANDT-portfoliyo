@@ -52,9 +52,23 @@ export default function Experience({ isStandalonePage = false }) {
 
       <div className="container position-relative" style={{ zIndex: 1 }}>
         {!isStandalonePage && (
-          <div className="row mb-50">
+          <motion.div
+            className="row mb-50"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="col-12 text-center">
-              <span className="section-badge">Career Journey</span>
+              <motion.span
+                className="section-badge"
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: 0.1 }}
+              >
+                Career Journey
+              </motion.span>
               <div className="section-title section-white-title">
                 <h2>Work Experience</h2>
               </div>
@@ -62,7 +76,7 @@ export default function Experience({ isStandalonePage = false }) {
                 Proven track record as a full-stack engineer delivering high-performance web applications and agency client solutions.
               </p>
             </div>
-          </div>
+          </motion.div>
         )}
 
         <div ref={timelineRef} className="experience-timeline">
@@ -86,18 +100,26 @@ export default function Experience({ isStandalonePage = false }) {
             </motion.div>
           </div>
 
-          {workExperience.map((exp, index) => (
-            <motion.div
-              key={exp.id}
-              className="timeline-item"
-              initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.65, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="timeline-dot" />
+          {workExperience.map((exp, index) => {
+            const isLeft = index % 2 === 0;
+            return (
+              <motion.div
+                key={exp.id}
+                className="timeline-item"
+                initial={{ opacity: 0, x: isLeft ? -60 : 60, scale: 0.95 }}
+                whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                viewport={{ once: true, margin: '-50px', amount: 0.2 }}
+                transition={{ duration: 0.7, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <motion.div
+                  className="timeline-dot"
+                  initial={{ scale: 0.3, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: 0.2 }}
+                />
 
-              <div className="timeline-card">
+                <div className="timeline-card">
                 <div className="timeline-header">
                   <div>
                     <h3 className="timeline-company">{exp.company}</h3>
@@ -137,7 +159,8 @@ export default function Experience({ isStandalonePage = false }) {
                 </div>
               </div>
             </motion.div>
-          ))}
+          );
+        })}
         </div>
       </div>
     </section>
