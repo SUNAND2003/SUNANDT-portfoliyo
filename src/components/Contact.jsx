@@ -1,8 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data/portfolioData';
 import DotField from './DotField';
-import SlingButton from './SlingButton';
 
 export default function Contact({ isStandalonePage = false }) {
   const [formData, setFormData] = useState({
@@ -18,8 +17,6 @@ export default function Contact({ isStandalonePage = false }) {
     error: ''
   });
 
-  const formRef = useRef(null);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -29,8 +26,7 @@ export default function Contact({ isStandalonePage = false }) {
   };
 
   const handleSubmit = async (e) => {
-    if (e && e.preventDefault) e.preventDefault();
-    if (status.submitting) return;
+    e.preventDefault();
     setStatus({ submitting: true, success: false, error: '' });
 
     try {
@@ -65,17 +61,6 @@ export default function Contact({ isStandalonePage = false }) {
         success: false,
         error: err.message || 'Sorry, Message could not send! Please try again.'
       });
-    }
-  };
-
-  const handleSlingSend = () => {
-    if (status.submitting) return;
-    if (formRef.current) {
-      if (formRef.current.reportValidity()) {
-        handleSubmit();
-      }
-    } else {
-      handleSubmit();
     }
   };
 
@@ -248,7 +233,7 @@ export default function Contact({ isStandalonePage = false }) {
                 Send a Message
               </h3>
 
-              <form ref={formRef} id="contactForm" className="contact-form" onSubmit={handleSubmit}>
+              <form id="contactForm" className="contact-form" onSubmit={handleSubmit}>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="form-group position-relative">
@@ -329,56 +314,22 @@ export default function Contact({ isStandalonePage = false }) {
 
                   <div className="col-md-12">
                     <div className="form-group mb-0">
-                      <div className="contact-sling-action-bar">
-                        <SlingButton
-                          onSend={handleSlingSend}
-                          disabled={status.submitting}
-                          padColor="#00d2ff"
-                          iconColor="#000000"
-                          accentColor="#00d2ff"
-                          wellColor="#151922"
-                          bandColor="rgba(0, 210, 255, 0.45)"
-                          size={54}
-                          strokeWidth={3}
-                          armAt={46}
-                          maxPull={150}
-                          launchSpeed={2600}
-                          recoil={0.2}
-                          flight={120}
-                          particles={16}
-                          spread={60}
-                          axis="any"
-                          tapSends={true}
-                          ariaLabel="Send Message"
-                        >
-                          {status.submitting ? (
-                            <i className="ri-loader-2-line fa-spin" style={{ fontSize: '20px', color: '#000000' }}></i>
-                          ) : undefined}
-                        </SlingButton>
-
-                        <button
-                          type="button"
-                          onClick={handleSlingSend}
-                          disabled={status.submitting}
-                          className="theme-btn"
-                          style={{ cursor: status.submitting ? 'not-allowed' : 'pointer' }}
-                        >
-                          {status.submitting ? (
-                            <>
-                              Sending Message... <i className="ri-loader-2-line fa-spin ms-1"></i>
-                            </>
-                          ) : (
-                            <>
-                              Send Message <i className="ri-send-plane-fill ms-1"></i>
-                            </>
-                          )}
-                        </button>
-
-                        <div className="contact-sling-hint">
-                          <i className="ri-drag-move-fill"></i>
-                          <span>Pull &amp; release or tap to launch</span>
-                        </div>
-                      </div>
+                      <button
+                        type="submit"
+                        className="theme-btn"
+                        disabled={status.submitting}
+                        style={{ cursor: status.submitting ? 'not-allowed' : 'pointer' }}
+                      >
+                        {status.submitting ? (
+                          <>
+                            Sending Message... <i className="ri-loader-2-line fa-spin"></i>
+                          </>
+                        ) : (
+                          <>
+                            Send Message <i className="ri-send-plane-fill ms-1"></i>
+                          </>
+                        )}
+                      </button>
                     </div>
                   </div>
 
