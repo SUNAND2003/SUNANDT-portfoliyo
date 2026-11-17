@@ -149,32 +149,39 @@ export default function Services({ isStandalonePage = false }) {
 
         {/* 3D INTERACTIVE FLIPCARD SERVICES GRID */}
         <div className="row g-4">
-          {services.map((service, index) => (
-            <div key={service.id} className="col-lg-6 col-md-6 col-12">
-              <motion.div
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.55, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <FlipCard
-                  front={renderFront(service)}
-                  back={renderBack(service)}
-                  height={400}
-                  radius={20}
-                  tilt={true}
-                  tiltMax={10}
-                  glare={true}
-                  glareOpacity={0.18}
-                  hoverScale={1.02}
-                  perspective={1100}
-                  background="#0c0e14"
-                  color="#ffffff"
-                  ariaLabel={`Flip card for ${service.title}`}
-                />
-              </motion.div>
-            </div>
-          ))}
+          {services.map((service, index) => {
+            const isLeft = index % 2 === 0;
+            return (
+              <div key={service.id} className="col-lg-6 col-md-6 col-12">
+                <motion.div
+                  initial={{ opacity: 0, x: isLeft ? -60 : 60, y: 20 }}
+                  whileInView={{ opacity: 1, x: 0, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{
+                    duration: 0.7,
+                    delay: (index % 2) * 0.12,
+                    ease: [0.22, 1, 0.36, 1]
+                  }}
+                >
+                  <FlipCard
+                    front={renderFront(service)}
+                    back={renderBack(service)}
+                    height={400}
+                    radius={20}
+                    tilt={true}
+                    tiltMax={10}
+                    glare={true}
+                    glareOpacity={0.18}
+                    hoverScale={1.02}
+                    perspective={1100}
+                    background="#0c0e14"
+                    color="#ffffff"
+                    ariaLabel={`Flip card for ${service.title}`}
+                  />
+                </motion.div>
+              </div>
+            );
+          })}
         </div>
 
         {/* BOTTOM CALLOUT BANNER WITH GLOW ANIMATION */}
