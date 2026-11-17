@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { personalInfo, counters, skillCategories } from '../data/portfolioData';
 import Counter from './Counter';
 import Lanyard from './Lanyard';
+import HoloCard from './HoloCard';
 import Galaxy from './Galaxy';
 
 export default function About({ isStandalonePage = false }) {
@@ -164,28 +165,46 @@ export default function About({ isStandalonePage = false }) {
           {skillCategories.map((cat, idx) => {
             const xOffset = idx === 0 ? -50 : idx === 2 ? 50 : 0;
             const yOffset = idx === 1 ? 40 : 20;
+            const presets = ['cosmos', 'shards', 'bursts'];
+            const preset = presets[idx % presets.length];
             return (
               <div key={cat.name} className="col-lg-4 col-md-6 mb-4">
                 <motion.div
-                  className="skill-box-card"
                   initial={{ opacity: 0, x: xOffset, y: yOffset }}
                   whileInView={{ opacity: 1, x: 0, y: 0 }}
                   viewport={{ once: true, amount: 0.15 }}
                   transition={{ duration: 0.65, delay: idx * 0.12, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                  style={{ height: '100%' }}
                 >
-                  <div className="skill-category-title">
-                    <i className="ri-code-s-slash-line text-primary" style={{ color: '#00d2ff' }}></i>
-                    {cat.name}
-                  </div>
-                  <div className="skill-grid">
-                    {cat.skills.map((skill) => (
-                      <div key={skill.name} className="skill-badge-item">
-                        <i className={skill.icon}></i>
-                        <span className="skill-badge-name">{skill.name}</span>
-                      </div>
-                    ))}
-                  </div>
+                  <HoloCard
+                    preset={preset}
+                    intensity={0.65}
+                    scale={1.2}
+                    edgeSparkle={0.7}
+                    frame={3}
+                    glare={0.4}
+                    foilColor="#00d2ff"
+                    width="100%"
+                    radius={16}
+                    tiltMax={14}
+                    hoverScale={1.03}
+                    idle={true}
+                    shadow={true}
+                    style={{ height: '100%' }}
+                  >
+                    <div className="skill-category-title">
+                      <i className="ri-code-s-slash-line text-primary" style={{ color: '#00d2ff' }}></i>
+                      {cat.name}
+                    </div>
+                    <div className="skill-grid">
+                      {cat.skills.map((skill) => (
+                        <div key={skill.name} className="skill-badge-item">
+                          <i className={skill.icon}></i>
+                          <span className="skill-badge-name">{skill.name}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </HoloCard>
                 </motion.div>
               </div>
             );

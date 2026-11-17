@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './HoloCard.css';
 
 const PRESETS = ['bursts', 'stars', 'shards', 'cosmos', 'rainbow', 'swirl', 'glitter', 'gold'];
@@ -46,12 +46,12 @@ struct Foil {
 
 float hash(vec2 p) {
   p = fract(p * vec2(234.34, 435.345));
-  p += dot(p, p + 34.23);
+  p += dot(p, p + vec2(34.23));
   return fract(p.x * p.y);
 }
 
 vec2 hash2(vec2 p) {
-  return vec2(hash(p), hash(p + 17.31));
+  return vec2(hash(p), hash(p + vec2(17.31)));
 }
 
 vec3 hue(float t) {
@@ -94,17 +94,17 @@ Foil stars(vec2 p) {
   for (int j = -1; j <= 1; j++) {
     for (int i = -1; i <= 1; i++) {
       vec2 id = base + vec2(float(i), float(j));
-      float pick = hash(id + 1.3);
+      float pick = hash(id + vec2(1.3));
       vec2 d = g - (id + 0.5 + (hash2(id) - 0.5) * 0.55);
       float m = smoothstep(0.07, 0.035, length(d));
       if (pick < 0.62) {
-        float size = mix(0.16, 0.5, pow(hash(id + 9.0), 1.8));
+        float size = mix(0.16, 0.5, pow(hash(id + vec2(9.0)), 1.8));
         float sector = TAU / (pick < 0.3 ? 4.0 : 5.0);
-        float k = abs(fract((atan(d.y, d.x) + hash(id + 4.0) * TAU) / sector) - 0.5) * 2.0;
+        float k = abs(fract((atan(d.y, d.x) + hash(id + vec2(4.0)) * TAU) / sector) - 0.5) * 2.0;
         float edge = size * mix(1.0, 0.36, pow(k, 0.6));
         m = smoothstep(edge, edge * 0.8, length(d));
       }
-      if (m > best.mask) best = Foil(m, hash(id + 6.0) * TAU, hash(id + 8.0), (hash2(id + 2.0) - 0.5) * 0.6);
+      if (m > best.mask) best = Foil(m, hash(id + vec2(6.0)) * TAU, hash(id + vec2(8.0)), (hash2(id + vec2(2.0)) - 0.5) * 0.6);
     }
   }
   return best;
@@ -130,8 +130,8 @@ Foil shards(vec2 p) {
     }
   }
   float crack = smoothstep(0.015, 0.07, second - best);
-  float shine = 0.25 + 0.75 * pow(hash(id + 7.7), 2.0);
-  return Foil((0.2 + 0.8 * crack) * shine, hash(id + 3.17) * TAU, hash(id + 11.73), (hash2(id + 5.0) - 0.5) * 0.5);
+  float shine = 0.25 + 0.75 * pow(hash(id + vec2(7.7)), 2.0);
+  return Foil((0.2 + 0.8 * crack) * shine, hash(id + vec2(3.17)) * TAU, hash(id + vec2(11.73)), (hash2(id + vec2(5.0)) - 0.5) * 0.5);
 }
 
 Foil cosmos(vec2 p) {
@@ -142,16 +142,16 @@ Foil cosmos(vec2 p) {
     for (int i = -1; i <= 1; i++) {
       vec2 id = base + vec2(float(i), float(j));
       vec2 d = g - (id + 0.5 + (hash2(id) - 0.5) * 0.7);
-      float size = mix(0.16, 0.52, hash(id + 2.0));
+      float size = mix(0.16, 0.52, hash(id + vec2(2.0)));
       float r = length(d);
       float m = max(smoothstep(0.05, 0.0, abs(r - size)), smoothstep(size, size - 0.04, r) * 0.22);
-      if (m > best.mask) best = Foil(m, hash(id + 6.0) * TAU + atan(d.y, d.x) * 0.5, hash(id + 1.0), (hash2(id + 4.0) - 0.5) * 0.5);
+      if (m > best.mask) best = Foil(m, hash(id + vec2(6.0)) * TAU + atan(d.y, d.x) * 0.5, hash(id + vec2(1.0)), (hash2(id + vec2(4.0)) - 0.5) * 0.5);
     }
   }
   vec2 fine = p / (0.035 / uScale);
   vec2 cell = floor(fine);
-  float dots = smoothstep(0.2, 0.1, length(fine - cell - 0.5 - (hash2(cell + 9.0) - 0.5) * 0.6)) * step(0.55, hash(cell + 2.0));
-  if (dots > best.mask) best = Foil(dots, hash(cell) * TAU, hash(cell + 3.0), (hash2(cell + 7.0) - 0.5) * 0.6);
+  float dots = smoothstep(0.2, 0.1, length(fine - cell - 0.5 - (hash2(cell + vec2(9.0)) - 0.5) * 0.6)) * step(0.55, hash(cell + vec2(2.0)));
+  if (dots > best.mask) best = Foil(dots, hash(cell) * TAU, hash(cell + vec2(3.0)), (hash2(cell + vec2(7.0)) - 0.5) * 0.6);
   return best;
 }
 
@@ -169,9 +169,9 @@ Foil swirl(vec2 p) {
 Foil glitter(vec2 p) {
   vec2 g = p * 72.0 * uScale;
   vec2 cell = floor(g);
-  float size = mix(0.18, 0.4, hash(cell + 3.0));
-  float m = smoothstep(size, size * 0.55, length(fract(g) - 0.5 - (hash2(cell) - 0.5) * 0.5)) * step(0.25, hash(cell + 5.0));
-  return Foil(m, hash(cell + 7.0) * TAU, hash(cell + 9.0), (hash2(cell + 11.0) - 0.5) * 0.9);
+  float size = mix(0.18, 0.4, hash(cell + vec2(3.0)));
+  float m = smoothstep(size, size * 0.55, length(fract(g) - 0.5 - (hash2(cell) - 0.5) * 0.5)) * step(0.25, hash(cell + vec2(5.0)));
+  return Foil(m, hash(cell + vec2(7.0)) * TAU, hash(cell + vec2(9.0)), (hash2(cell + vec2(11.0)) - 0.5) * 0.9);
 }
 
 Foil gold(vec2 p) {
@@ -185,20 +185,20 @@ vec3 sparkles(vec2 p, vec3 halfway, vec2 sweep, float awake) {
   vec2 g = p * 62.0;
   vec2 cell = floor(g);
   vec2 d = fract(g) - 0.5 - (hash2(cell) - 0.5) * 0.36;
-  float spin = hash(cell + 3.0) * TAU;
+  float spin = hash(cell + vec2(3.0)) * TAU;
   d = mat2(cos(spin), -sin(spin), sin(spin), cos(spin)) * d;
   vec2 a = abs(d);
   float hexagon = max(a.x * 0.866 + a.y * 0.5, a.y);
-  float size = mix(0.22, 0.38, hash(cell + 2.0));
-  float piece = smoothstep(size, size - 0.07, hexagon) * step(0.42, hash(cell + 4.0));
-  vec3 facet = normalize(vec3((hash2(cell + 6.0) - 0.5) * 0.9, 1.0));
+  float size = mix(0.22, 0.38, hash(cell + vec2(2.0)));
+  float piece = smoothstep(size, size - 0.07, hexagon) * step(0.42, hash(cell + vec2(4.0)));
+  vec3 facet = normalize(vec3((hash2(cell + vec2(6.0)) - 0.5) * 0.9, 1.0));
   float flash = pow(max(dot(facet, halfway), 0.0), 6.0);
-  vec3 tint = hue(dot(sweep, vec2(cos(spin), sin(spin))) * 1.2 + dot(sweep, vec2(0.8, 0.6)) * 0.8 + hash(cell + 8.0) * 0.5);
+  vec3 tint = hue(dot(sweep, vec2(cos(spin), sin(spin))) * 1.2 + dot(sweep, vec2(0.8, 0.6)) * 0.8 + hash(cell + vec2(8.0)) * 0.5);
   vec3 color = piece * tint * (0.3 + 1.6 * flash) * awake;
   vec2 fine = p * 210.0;
   vec2 speckCell = floor(fine);
-  float speck = smoothstep(0.24, 0.0, length(fract(fine) - 0.5 - (hash2(speckCell) - 0.5) * 0.5)) * step(0.72, hash(speckCell + 1.0));
-  float speckFlash = pow(max(dot(normalize(vec3((hash2(speckCell + 2.0) - 0.5) * 0.9, 1.0)), halfway), 0.0), 10.0);
+  float speck = smoothstep(0.24, 0.0, length(fract(fine) - 0.5 - (hash2(speckCell) - 0.5) * 0.5)) * step(0.72, hash(speckCell + vec2(1.0)));
+  float speckFlash = pow(max(dot(normalize(vec3((hash2(speckCell + vec2(2.0)) - 0.5) * 0.9, 1.0)), halfway), 0.0), 10.0);
   return color + vec3(1.2) * speck * speckFlash * (1.0 - piece);
 }
 
@@ -216,7 +216,7 @@ void main() {
     outColor = vec4(0.0);
     return;
   }
-  vec3 art = uReady > 0.5 ? pow(sampled.rgb, vec3(2.2)) : vec3(0.12);
+  vec3 art = uReady > 0.5 ? pow(sampled.rgb, vec3(2.2)) : vec3(0.05, 0.06, 0.08);
 
   mat3 rx = mat3(1.0, 0.0, 0.0, 0.0, cos(uTilt.x), sin(uTilt.x), 0.0, -sin(uTilt.x), cos(uTilt.x));
   mat3 ry = mat3(cos(uTilt.y), 0.0, -sin(uTilt.y), 0.0, 1.0, 0.0, sin(uTilt.y), 0.0, cos(uTilt.y));
@@ -303,10 +303,10 @@ const compile = (gl, type, source) => {
 };
 
 export default function HoloCard({
+  children,
   image,
   backImage,
   alt = '',
-  holo = true,
   preset = 'bursts',
   intensity = 0.85,
   scale = 1,
@@ -314,10 +314,10 @@ export default function HoloCard({
   frame = 4,
   glare = 0.5,
   foilColor = '#e2e6ec',
-  width = 320,
-  radius = 14,
+  width = '100%',
+  radius = 16,
   tiltMax = 14,
-  hoverScale = 1.04,
+  hoverScale = 1.03,
   idle = true,
   shadow = true,
   className = '',
@@ -364,10 +364,10 @@ export default function HoloCard({
     const root = rootRef.current;
     const rotor = rotorRef.current;
     const canvas = canvasRef.current;
-    if (!root || !rotor || (holo && !canvas)) return undefined;
+    if (!root || !rotor || !canvas) return undefined;
 
     const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-    const gl = (holo && canvas) ? canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: true, antialias: false }) : null;
+    const gl = canvas.getContext('webgl2', { alpha: true, premultipliedAlpha: true, antialias: false });
     let program = null;
     let texture = null;
     let buffer = null;
@@ -383,14 +383,11 @@ export default function HoloCard({
         gl.attachShader(program, fragment);
         gl.bindAttribLocation(program, 0, 'position');
         gl.linkProgram(program);
+        gl.deleteShader(vertex);
+        gl.deleteShader(fragment);
         if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-          gl.deleteShader(vertex);
-          gl.deleteShader(fragment);
           gl.deleteProgram(program);
           program = null;
-        } else {
-          gl.deleteShader(vertex);
-          gl.deleteShader(fragment);
         }
       }
       if (program) {
@@ -450,7 +447,7 @@ export default function HoloCard({
     let calm = 0;
 
     const draw = () => {
-      if (!holo || !gl || !program || !canvas) return;
+      if (!gl || !program) return;
       const s = settingsRef.current;
       const w = canvas.width;
       const h = canvas.height;
@@ -527,7 +524,7 @@ export default function HoloCard({
       if (shadowRef.current) {
         shadowRef.current.style.transform = `translate(${-state.tiltY * 0.7}px, ${state.tiltX * 0.7}px) scale(${0.9 + (state.lift - 1) * 1.5})`;
       }
-      if (holo && canvas && Math.cos(((state.tiltY + state.turn) * Math.PI) / 180) > -0.05) draw();
+      if (Math.cos(((state.tiltY + state.turn) * Math.PI) / 180) > -0.05) draw();
       const motion =
         Math.abs(state.tiltVX) +
         Math.abs(state.tiltVY) +
@@ -550,10 +547,6 @@ export default function HoloCard({
     wakeRef.current = wake;
 
     const resize = () => {
-      if (!holo || !canvas) {
-        wake();
-        return;
-      }
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
       const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
@@ -568,15 +561,20 @@ export default function HoloCard({
     loadRef.current = src => {
       textureReady = false;
       setReady(false);
-      if (!src) return;
+      if (!src) {
+        textureReady = true;
+        setReady(true);
+        draw();
+        wake();
+        return;
+      }
       const img = new Image();
       img.crossOrigin = 'anonymous';
       img.decoding = 'async';
       img.onload = () => {
         if (!alive) return;
         if (img.naturalWidth && img.naturalHeight) setRatio(img.naturalWidth / img.naturalHeight);
-        setReady(true);
-        if (!holo || !gl || !program) return;
+        if (!gl || !program) return;
         try {
           gl.bindTexture(gl.TEXTURE_2D, texture);
           gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false);
@@ -584,6 +582,7 @@ export default function HoloCard({
           gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
           gl.generateMipmap(gl.TEXTURE_2D);
           textureReady = true;
+          setReady(true);
           draw();
           wake();
         } catch {
@@ -594,9 +593,8 @@ export default function HoloCard({
     };
     loadRef.current(image);
 
-    const targetToObserve = (holo && canvas) ? canvas : root;
     const resizeObserver = new ResizeObserver(resize);
-    if (targetToObserve) resizeObserver.observe(targetToObserve);
+    resizeObserver.observe(canvas);
     const visibility = new IntersectionObserver(entries => {
       visible = entries.some(entry => entry.isIntersecting);
       if (visible) wake();
@@ -609,7 +607,7 @@ export default function HoloCard({
       cancelAnimationFrame(raf);
       wakeRef.current = null;
       loadRef.current = null;
-      if (resizeObserver) resizeObserver.disconnect();
+      resizeObserver.disconnect();
       visibility.disconnect();
       if (gl) {
         gl.deleteTexture(texture);
@@ -643,8 +641,8 @@ export default function HoloCard({
   return (
     <div
       ref={rootRef}
-      className={`holo-card${className ? ` ${className}` : ''}`}
-      role={flippable ? 'button' : 'img'}
+      className={`holo-card${!children ? ' holo-card--image-only' : ''}${className ? ` ${className}` : ''}`}
+      role={flippable ? 'button' : 'region'}
       tabIndex={flippable ? 0 : undefined}
       aria-label={alt || undefined}
       aria-pressed={flippable ? flipped : undefined}
@@ -662,7 +660,7 @@ export default function HoloCard({
         if (!e.repeat) toggle();
       }}
       style={{
-        '--hc-w': `${width}px`,
+        '--hc-w': typeof width === 'number' ? `${width}px` : width,
         '--hc-ratio': ratio,
         '--hc-radius': `${radius}px`,
         ...style
@@ -672,7 +670,8 @@ export default function HoloCard({
       <div ref={rotorRef} className="holo-card__rotor">
         <div className="holo-card__face holo-card__face--front">
           {image ? <img src={image} alt="" draggable={false} /> : null}
-          {holo ? <canvas ref={canvasRef} /> : null}
+          <canvas ref={canvasRef} />
+          {children && <div className="holo-card__content">{children}</div>}
         </div>
         {flippable ? (
           <div className="holo-card__face holo-card__face--back">
