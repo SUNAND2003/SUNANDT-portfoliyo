@@ -175,14 +175,14 @@ export const projects = [
   },
   {
     id: 5,
-    title: "Qroots International",
+    title: "Hexa Branding",
     category: "webapp",
-    categoryLabel: "Educational / Consulting",
-    description: "An educational consulting portal for medical aspirants with course listings, consultant bookings, and career guidance resources.",
-    image: "/assets/images/projects/qroots-cover.jpg",
-    liveDemo: "https://www.qrootsinternational.com/",
+    categoryLabel: "Agency & Digital Solutions",
+    description: "Corporate website for Hexa Branding advertising and digital solutions agency, showcasing full-scale digital marketing, web engineering, UI/UX design, and brand strategy across India, UAE, and UK.",
+    image: "/assets/images/projects/hexabranding-cover.jpg",
+    liveDemo: "https://hexabranding.com/",
     github: "https://github.com/SUNAND2003",
-    tags: ["Consulting", "Lead Generation", "Responsive Design", "Modern UI"],
+    tags: ["Agency Platform", "Brand Strategy", "Web Engineering", "Responsive UI"],
     featured: true
   },
   {
