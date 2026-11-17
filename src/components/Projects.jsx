@@ -17,7 +17,7 @@ export default function Projects({ isStandalonePage = false }) {
             className="row mb-40"
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
+            viewport={{ once: true, margin: '-20px' }}
             transition={{ duration: 0.6 }}
           >
             <div className="col-12 text-center">
@@ -39,7 +39,7 @@ export default function Projects({ isStandalonePage = false }) {
           className="projects-controls-bar mb-50"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={{ once: true, margin: '-20px' }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
           <div className="d-flex align-items-center justify-content-center flex-wrap gap-3">
@@ -74,7 +74,7 @@ export default function Projects({ isStandalonePage = false }) {
                   key={project.id}
                   className="stacking-card-wrapper"
                   style={{
-                    top: `calc(95px + ${index * 24}px)`,
+                    '--card-index': index,
                     zIndex: index + 1
                   }}
                 >
@@ -82,7 +82,7 @@ export default function Projects({ isStandalonePage = false }) {
                     className="stacking-card-inner"
                     initial={{ opacity: 0, y: 35 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.12 }}
+                    viewport={{ once: true, amount: 0.08 }}
                     transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <div className="row align-items-center g-4 g-lg-5">

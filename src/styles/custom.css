@@ -1532,6 +1532,7 @@ html, body {
 .stacking-card-wrapper {
   position: -webkit-sticky;
   position: sticky;
+  top: calc(95px + (var(--card-index, 0) * 24px));
   margin-bottom: 50px;
   width: 100%;
   will-change: top;
@@ -1544,7 +1545,7 @@ html, body {
   border-radius: 24px;
   padding: 42px;
   box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.8), 0 20px 55px rgba(0, 0, 0, 0.9);
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
   position: relative;
   overflow: hidden;
 }
@@ -1554,13 +1555,32 @@ html, body {
   border-top-color: rgba(255, 255, 255, 0.55) !important;
   box-shadow: 0 -12px 35px rgba(0, 0, 0, 0.9), 0 30px 70px rgba(0, 0, 0, 0.95) !important;
   transform: translateY(-4px);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+@media (max-width: 991px) {
+  .stacking-card-wrapper {
+    top: calc(80px + (var(--card-index, 0) * 16px));
+    margin-bottom: 35px;
+  }
 }
 
 @media (max-width: 767px) {
+  html, body {
+    overflow-x: clip !important;
+  }
+
+  .stacking-projects-deck {
+    padding-bottom: 50px;
+    overflow: visible !important;
+  }
+
   .stacking-card-wrapper {
-    position: relative !important;
-    top: auto !important;
-    margin-bottom: 24px !important;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: calc(72px + (var(--card-index, 0) * 12px)) !important;
+    margin-bottom: 26px !important;
+    will-change: top;
   }
 }
 
@@ -1759,10 +1779,75 @@ html, body {
 
 @media (max-width: 991px) {
   .stacking-card-inner {
-    padding: 26px 20px;
+    padding: 24px 18px;
+    border-radius: 20px;
   }
   .stacking-card-title {
-    font-size: 24px !important;
+    font-size: 22px !important;
+    margin-bottom: 10px !important;
+  }
+  .stacking-card-desc {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin-bottom: 16px !important;
+  }
+  .stacking-card-tags {
+    margin-bottom: 18px !important;
+    gap: 6px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .stacking-card-inner {
+    padding: 18px 16px !important;
+    border-radius: 18px !important;
+  }
+  .stacking-card-meta {
+    margin-bottom: 10px !important;
+  }
+  .stacking-card-index {
+    font-size: 15px !important;
+  }
+  .stacking-card-category {
+    font-size: 11px !important;
+    padding: 3px 9px !important;
+  }
+  .stacking-card-title {
+    font-size: 19px !important;
+    margin-bottom: 8px !important;
+  }
+  .stacking-card-desc {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 12px !important;
+  }
+  .stacking-card-tags {
+    margin-bottom: 14px !important;
+    gap: 5px !important;
+  }
+  .stacking-tag {
+    font-size: 10.5px !important;
+    padding: 2px 7px !important;
+  }
+  .stacking-card-actions {
+    gap: 8px !important;
+  }
+  .stacking-btn-primary,
+  .stacking-btn-secondary {
+    padding: 7px 13px !important;
+    font-size: 12.5px !important;
+  }
+  .browser-mockup-header {
+    padding: 7px 10px !important;
+  }
+  .browser-dot {
+    width: 8px !important;
+    height: 8px !important;
+  }
+  .browser-address-bar {
+    font-size: 10px !important;
+    padding: 2px 8px !important;
+    max-width: 140px !important;
   }
 }
 
