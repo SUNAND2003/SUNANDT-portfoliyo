@@ -86,7 +86,7 @@ export default function About({ isStandalonePage = false }) {
               </div>
 
               <h3 className="text-white mb-3" style={{ fontSize: '28px', fontWeight: 600 }}>
-                Hi, I'm {personalInfo.name} 👋
+                Hi, I'm {personalInfo.name}
               </h3>
 
               <p className="text-muted mb-4" style={{ fontSize: '16px', lineHeight: '1.8' }}>
