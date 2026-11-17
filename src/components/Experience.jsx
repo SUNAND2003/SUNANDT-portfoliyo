@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { workExperience } from '../data/portfolioData';
-import Lightning from './Lightning';
+import LightTunnel from './LightTunnel';
 
 export default function Experience({ isStandalonePage = false }) {
   const timelineRef = useRef(null);
@@ -24,7 +24,7 @@ export default function Experience({ isStandalonePage = false }) {
 
   return (
     <section id="experience" className="experience-area pt-80 pb-80 position-relative overflow-hidden">
-      {/* REACT BITS LIGHTNING BACKGROUND */}
+      {/* REACT BITS LIGHT TUNNEL BACKGROUND */}
       <div
         style={{
           position: 'absolute',
@@ -35,26 +35,16 @@ export default function Experience({ isStandalonePage = false }) {
         }}
         aria-hidden="true"
       >
-        <Lightning
-          color="#4d6bff"
-          bolts={1}
-          spread={0.6}
-          branches={0.5}
-          xOffset={0}
-          angle={0}
-          size={1}
-          thickness={1.2}
-          glow={1.1}
-          intensity={1}
-          speed={0.9}
-          flicker={0.5}
+        <LightTunnel
+          cableColor="#ffffff"
+          pulseColor="#ffffff"
+          cableCount={56}
+          pulseDensity={0.5}
+          flowDirection="inward"
           mouseInteraction={true}
-          mouseStrength={1}
-          clickStrike={true}
-          intro={true}
-          fade={0.25}
-          opacity={0.8}
-          lightMode={false}
+          clickSurge={true}
+          fadeNear={0.45}
+          opacity={0.75}
         />
       </div>
 
