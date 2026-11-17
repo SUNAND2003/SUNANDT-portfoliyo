@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import StarBorder from './StarBorder';
+import GooeyNav from './GooeyNav';
 
 const NAV_ITEMS = [
   { label: 'Home', href: '#home', icon: 'ri-home-4-line' },
@@ -14,6 +15,16 @@ export default function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('#home');
+
+  const activeNavIndex = useMemo(() => {
+    const idx = NAV_ITEMS.findIndex((item) => item.href === activeSection);
+    return idx >= 0 ? idx : 0;
+  }, [activeSection]);
+
+  const gooeyItems = useMemo(
+    () => NAV_ITEMS.map(({ label, href }) => ({ label, href })),
+    []
+  );
 
   const scrollToSection = (hash) => {
     const id = hash.replace('#', '');
@@ -95,29 +106,32 @@ export default function Navbar() {
               </a>
             </div>
 
-            {/* CENTER FLOATING PILL NAV */}
+            {/* CENTER FLOATING GOOEY PILL NAV */}
             <div className="header-col-center d-none d-lg-block">
-              <nav className="center-nav-pill-wrapper" aria-label="Main Navigation">
-                <ul className="center-nav-pill">
-                  {NAV_ITEMS.map((item) => {
-                    const isActive = activeSection === item.href;
-                    return (
-                      <li key={item.label}>
-                        <a
-                          href={item.href}
-                          className={`pill-nav-link ${isActive ? 'active' : ''}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            scrollToSection(item.href);
-                          }}
-                        >
-                          {item.label}
-                        </a>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </nav>
+              <div className="center-nav-pill-wrapper" aria-label="Main Navigation">
+                <GooeyNav
+                  items={gooeyItems}
+                  activeIndex={activeNavIndex}
+                  onChange={(index, item) => {
+                    if (item?.href) {
+                      scrollToSection(item.href);
+                    }
+                  }}
+                  theme="dark"
+                  size="sm"
+                  color="#ffffff"
+                  activeTextColor="#000000"
+                  colors={['#ffffff', '#22c55e']}
+                  particleCount={15}
+                  spread={48}
+                  animationTime={550}
+                  timeVariance={280}
+                  gooeyness={0.5}
+                  wobble={0.45}
+                  hoverEffect={true}
+                  frame={true}
+                />
+              </div>
             </div>
 
             {/* RIGHT BUTTON & MOBILE TOGGLE */}
