@@ -92,7 +92,6 @@ export default function Navbar() {
               >
                 <span className="logo-main">Sunand</span>
                 <span className="logo-t ms-1">T</span>
-                <span className="logo-dot">.</span>
               </a>
             </div>
 
@@ -183,7 +182,6 @@ export default function Navbar() {
             >
               <span className="logo-main">Sunand</span>
               <span className="logo-t ms-1">T</span>
-              <span className="logo-dot">.</span>
             </a>
             <button
               className="sidebar__close-btn"
