@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { workExperience } from '../data/portfolioData';
-import Galaxy from './Galaxy';
+import Lightning from './Lightning';
 
 export default function Experience({ isStandalonePage = false }) {
   const timelineRef = useRef(null);
@@ -24,29 +24,37 @@ export default function Experience({ isStandalonePage = false }) {
 
   return (
     <section id="experience" className="experience-area pt-80 pb-80 position-relative overflow-hidden">
-      {/* GALAXY COSMIC BACKGROUND */}
+      {/* REACT BITS LIGHTNING BACKGROUND */}
       <div
         style={{
           position: 'absolute',
           inset: 0,
           pointerEvents: 'none',
           zIndex: 0,
-          opacity: 0.7
+          overflow: 'hidden'
         }}
+        aria-hidden="true"
       >
-        <Galaxy
-          layers={3}
-          density={1.6}
-          glowIntensity={0.35}
-          starSize={1.1}
-          flareIntensity={0.6}
-          starSpeed={0.3}
-          mouseRepulsion={true}
-          repulsionStrength={1.5}
-          twinkleIntensity={0.35}
-          dpr={0.7}
-          transparent={true}
-          clickWarp={false}
+        <Lightning
+          color="#4d6bff"
+          bolts={1}
+          spread={0.6}
+          branches={0.5}
+          xOffset={0}
+          angle={0}
+          size={1}
+          thickness={1.2}
+          glow={1.1}
+          intensity={1}
+          speed={0.9}
+          flicker={0.5}
+          mouseInteraction={true}
+          mouseStrength={1}
+          clickStrike={true}
+          intro={true}
+          fade={0.25}
+          opacity={0.8}
+          lightMode={false}
         />
       </div>
 
