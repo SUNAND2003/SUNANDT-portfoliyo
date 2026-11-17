@@ -127,7 +127,7 @@ export default function Contact({ isStandalonePage = false }) {
               {/* WHATSAPP */}
               {personalInfo.socials.whatsapp && (
                 <div className="single-contact">
-                  <span className="circle-btn" style={{ borderColor: 'rgba(34, 197, 94, 0.4)', color: '#22c55e' }}>
+                  <span className="circle-btn">
                     <i className="ri-whatsapp-line"></i>
                   </span>
                   <h2>WhatsApp:</h2>
