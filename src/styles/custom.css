@@ -1947,61 +1947,89 @@ html, body {
   overflow: hidden;
 }
 
-/* Single Contact Info Items */
-.contact-area .single-contact h2 {
+/* Contact Left Box (contact-content-part): White Background Card with Black Letters */
+.contact-area .contact-content-part {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 20px;
+  padding: 40px 32px 30px 36px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35);
+  color: #000000 !important;
+}
+
+.contact-area .contact-content-part .single-contact {
+  margin-bottom: 24px;
+}
+
+.contact-area .contact-content-part .single-contact h2 {
   font-size: 18px !important;
-  font-weight: 600 !important;
-  color: #ffffff !important;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  margin-top: 14px;
+  margin-bottom: 6px;
 }
 
-.contact-area .single-contact p {
-  color: #cbd5e1 !important;
-  font-size: 15px;
-}
-
-.contact-area .single-contact a {
-  color: #ffffff !important;
+.contact-area .contact-content-part .single-contact p {
+  color: #1f2937 !important;
+  font-size: 15px !important;
   font-weight: 500;
+  line-height: 1.5;
+  margin-bottom: 0;
 }
 
-.contact-area .single-contact a:hover {
+.contact-area .contact-content-part .single-contact a {
+  color: #000000 !important;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-area .contact-content-part .single-contact a:hover {
   color: #22c55e !important;
   text-decoration: underline;
 }
 
-.contact-area .single-contact .circle-btn {
-  background: #0c0e14 !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  color: #ffffff !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  transition: all 0.2s ease;
-}
-
-.contact-area .single-contact .circle-btn:hover {
-  background: #22c55e !important;
+.contact-area .contact-content-part .single-contact .circle-btn {
+  background: #f3f4f6 !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
   color: #000000 !important;
-  border-color: #22c55e !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 18px;
 }
 
-.contact-area .about-social a {
-  background: #0c0e14 !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+.contact-area .contact-content-part .single-contact .circle-btn:hover {
+  background: #000000 !important;
   color: #ffffff !important;
+  border-color: #000000 !important;
+  transform: translateY(-2px);
+}
+
+.contact-area .contact-content-part .about-social a {
+  background: #f3f4f6 !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  color: #000000 !important;
   width: 42px;
   height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  font-size: 16px;
   transition: all 0.2s ease;
 }
 
-.contact-area .about-social a:hover {
-  background: #22c55e !important;
-  color: #000000 !important;
-  border-color: #22c55e !important;
+.contact-area .contact-content-part .about-social a:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+  transform: translateY(-2px);
 }
 
 /* Modern Clean Contact Form Card on Pure Black Background */
