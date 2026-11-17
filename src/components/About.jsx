@@ -92,10 +92,6 @@ export default function About({ isStandalonePage = false }) {
                   intro={true}
                 />
               </div>
-              <div className="about-lanyard-badge">
-                <i className="ri-drag-move-fill"></i>
-                <span>Interactive 3D ID Card &bull; Drag or click to flip</span>
-              </div>
             </motion.div>
           </div>
 
