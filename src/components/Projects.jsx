@@ -48,7 +48,7 @@ export default function Projects({ isStandalonePage = false }) {
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.55, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="d-flex align-items-center justify-content-center flex-wrap gap-3">
+          <div className="category-filter-container d-flex align-items-center justify-content-center">
             {/* CATEGORY TABS */}
             <div className="category-filter-wrap m-0">
               {projectCategories.map((cat) => (
