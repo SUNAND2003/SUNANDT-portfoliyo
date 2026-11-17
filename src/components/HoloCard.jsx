@@ -547,7 +547,7 @@ export default function HoloCard({
     wakeRef.current = wake;
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.25);
       const w = Math.max(1, Math.round(canvas.clientWidth * dpr));
       const h = Math.max(1, Math.round(canvas.clientHeight * dpr));
       if (canvas.width !== w || canvas.height !== h) {
@@ -597,14 +597,33 @@ export default function HoloCard({
     resizeObserver.observe(canvas);
     const visibility = new IntersectionObserver(entries => {
       visible = entries.some(entry => entry.isIntersecting);
-      if (visible) wake();
+      if (visible) {
+        wake();
+      } else if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
     });
     visibility.observe(root);
+
+    const onVisibility = () => {
+      if (document.hidden) {
+        if (raf) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+        }
+      } else if (visible) {
+        wake();
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+
     resize();
 
     return () => {
       alive = false;
       cancelAnimationFrame(raf);
+      document.removeEventListener('visibilitychange', onVisibility);
       wakeRef.current = null;
       loadRef.current = null;
       resizeObserver.disconnect();

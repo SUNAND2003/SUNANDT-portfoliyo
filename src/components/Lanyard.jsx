@@ -1303,7 +1303,7 @@ const Lanyard = ({
     const resize = () => {
       view.width = Math.max(1, container.clientWidth);
       view.height = Math.max(1, container.clientHeight);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
       renderer.setSize(view.width, view.height, false);
       apply();
       render();
@@ -1313,11 +1313,21 @@ const Lanyard = ({
     resizeObserver.observe(container);
     const intersectionObserver = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
-      if (visible) start();
+      if (visible) {
+        start();
+      } else if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
     });
     intersectionObserver.observe(container);
     const onVisibility = () => {
-      if (!document.hidden) start();
+      if (!document.hidden && visible) {
+        start();
+      } else if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
     };
     document.addEventListener('visibilitychange', onVisibility);
 

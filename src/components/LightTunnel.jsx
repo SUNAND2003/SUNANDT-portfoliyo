@@ -410,19 +410,26 @@ const LightTunnel = ({
       render();
       const settled = Math.abs(target[0] - steer.x) < 0.0005 && Math.abs(target[1] - steer.y) < 0.0005;
       const busy = motion > 0 || !settled || reveal < 1 || surge.age < 2.4;
-      if (busy) raf = requestAnimationFrame(frame);
-      else last = 0;
+      if (busy && visible && !document.hidden) {
+        raf = requestAnimationFrame(frame);
+      } else {
+        raf = 0;
+        last = 0;
+      }
     };
 
     const wake = () => {
-      if (!raf && visible && !document.hidden) raf = requestAnimationFrame(frame);
+      if (!raf && visible && !document.hidden) {
+        last = 0;
+        raf = requestAnimationFrame(frame);
+      }
     };
 
     const resize = () => {
       const s = settingsRef.current;
       const width = Math.max(1, container.clientWidth);
       const height = Math.max(1, container.clientHeight);
-      const ratio = Math.min(s.dpr || window.devicePixelRatio || 1, 2);
+      const ratio = Math.min(s.dpr || window.devicePixelRatio || 1, 1.25);
       canvas.width = Math.max(1, Math.round(width * ratio));
       canvas.height = Math.max(1, Math.round(height * ratio));
       render();
@@ -460,8 +467,15 @@ const LightTunnel = ({
     };
 
     const onVisibility = () => {
-      last = 0;
-      wake();
+      if (document.hidden) {
+        if (raf) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+        }
+      } else if (visible) {
+        last = 0;
+        wake();
+      }
     };
 
     const resizeObserver = new ResizeObserver(resize);
@@ -471,6 +485,9 @@ const LightTunnel = ({
       if (visible) {
         last = 0;
         wake();
+      } else if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
       }
     });
     intersection.observe(container);

@@ -1692,7 +1692,6 @@ body {
   top: calc(95px + (var(--card-index, 0) * 24px));
   margin-bottom: 50px;
   width: 100%;
-  will-change: top;
 }
 
 .stacking-card-inner {
@@ -1739,7 +1738,6 @@ body {
     position: sticky !important;
     top: calc(72px + (var(--card-index, 0) * 12px)) !important;
     margin-bottom: 26px !important;
-    will-change: top;
   }
 }
 
@@ -2527,6 +2525,43 @@ body {
   .stacking-card-wrapper:hover .browser-mockup-body img {
     transform: none !important;
   }
+}
+
+/* ==========================================================================
+   PERFORMANCE & SMOOTH BACKGROUND ANIMATIONS OPTIMIZATION
+   ========================================================================== */
+
+/* GPU acceleration for interactive background canvases */
+.galaxy-canvas,
+.light-tunnel-canvas,
+.dot-field__canvas,
+.fullscreen-ghost-cursor canvas,
+.about-lanyard-wrapper canvas {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  image-rendering: auto;
+}
+
+/* Ensure smooth scrolling across all modern browsers */
+html {
+  scroll-behavior: auto; /* Managed at high FPS by Lenis on desktop */
+}
+
+@media (pointer: coarse) {
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Off-screen paint isolation to prevent layout jank */
+.main-hero-area,
+.about-area,
+.experience-area,
+.services-area,
+.projects-area,
+.contact-area {
+  contain: layout style;
 }
 
 

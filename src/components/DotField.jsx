@@ -607,13 +607,23 @@ const DotField = ({
 
     const intersection = new IntersectionObserver(entries => {
       visible = entries.some(entry => entry.isIntersecting);
-      wake();
+      if (visible) {
+        wake();
+      } else if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
     });
     intersection.observe(container);
 
     const onVisibility = () => {
       pageVisible = document.visibilityState !== 'hidden';
-      wake();
+      if (pageVisible && visible) {
+        wake();
+      } else if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
     };
     document.addEventListener('visibilitychange', onVisibility);
 

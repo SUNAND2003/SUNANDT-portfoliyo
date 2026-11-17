@@ -88,7 +88,7 @@ export default function About({ isStandalonePage = false }) {
                   gravity={0.95}
                   damping={0.48}
                   elasticity={0.52}
-                  breeze={0.38}
+                  breeze={0.16}
                   interactive={true}
                   intro={true}
                 />
@@ -186,9 +186,9 @@ export default function About({ isStandalonePage = false }) {
                     foilColor="#00d2ff"
                     width="100%"
                     radius={16}
-                    tiltMax={14}
-                    hoverScale={1.03}
-                    idle={true}
+                    tiltMax={12}
+                    hoverScale={1.02}
+                    idle={false}
                     shadow={true}
                     style={{ height: '100%' }}
                   >

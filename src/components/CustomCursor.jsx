@@ -3,6 +3,8 @@ import React, { useEffect, useState, useRef } from 'react';
 export default function CustomCursor() {
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const visibleRef = useRef(false);
+  const isMoving = useRef(false);
   const ballRef = useRef(null);
   const mousePos = useRef({ x: -100, y: -100 });
   const ballPos = useRef({ x: -100, y: -100 });
@@ -11,21 +13,38 @@ export default function CustomCursor() {
     // Only enable custom cursor for laptop view (>= 992px) with fine pointer
     if (window.innerWidth < 992 || window.matchMedia('(pointer: coarse)').matches) return;
 
-    const handleMouseMove = (e) => {
-      mousePos.current = { x: e.clientX, y: e.clientY };
-      if (!isVisible) setIsVisible(true);
-    };
+    let animationFrameId = null;
 
-    let animationFrameId;
     const updateCursor = () => {
-      // Smooth lerp
-      ballPos.current.x += (mousePos.current.x - ballPos.current.x) * 0.2;
-      ballPos.current.y += (mousePos.current.y - ballPos.current.y) * 0.2;
+      const dx = mousePos.current.x - ballPos.current.x;
+      const dy = mousePos.current.y - ballPos.current.y;
+
+      ballPos.current.x += dx * 0.22;
+      ballPos.current.y += dy * 0.22;
 
       if (ballRef.current) {
         ballRef.current.style.transform = `translate3d(${ballPos.current.x}px, ${ballPos.current.y}px, 0)`;
       }
-      animationFrameId = requestAnimationFrame(updateCursor);
+
+      if (Math.abs(dx) > 0.1 || Math.abs(dy) > 0.1) {
+        animationFrameId = requestAnimationFrame(updateCursor);
+      } else {
+        isMoving.current = false;
+        animationFrameId = null;
+      }
+    };
+
+    const handleMouseMove = (e) => {
+      mousePos.current.x = e.clientX;
+      mousePos.current.y = e.clientY;
+      if (!visibleRef.current) {
+        visibleRef.current = true;
+        setIsVisible(true);
+      }
+      if (!isMoving.current) {
+        isMoving.current = true;
+        animationFrameId = requestAnimationFrame(updateCursor);
+      }
     };
 
     const handleMouseEnter = (e) => {
@@ -54,18 +73,17 @@ export default function CustomCursor() {
       }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseover', handleMouseEnter);
-    document.addEventListener('mouseout', handleMouseLeave);
-    animationFrameId = requestAnimationFrame(updateCursor);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mouseover', handleMouseEnter, { passive: true });
+    document.addEventListener('mouseout', handleMouseLeave, { passive: true });
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseover', handleMouseEnter);
       document.removeEventListener('mouseout', handleMouseLeave);
-      cancelAnimationFrame(animationFrameId);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
     };
-  }, [isVisible]);
+  }, []);
 
   if (typeof window !== 'undefined' && (window.innerWidth < 992 || window.matchMedia('(pointer: coarse)').matches)) {
     return null;

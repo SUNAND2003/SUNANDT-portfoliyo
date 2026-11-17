@@ -71,13 +71,15 @@ export default function App() {
             <GhostCursor
               className="fullscreen-ghost-cursor"
               color="#00d2ff"
-              size={80}
-              trailLength={50}
-              inertia={0.5}
-              turbulence={0.5}
-              drift={0.3}
-              bloomStrength={0.6}
-              grainIntensity={0.05}
+              size={70}
+              trailLength={22}
+              inertia={0.4}
+              turbulence={0.3}
+              drift={0.2}
+              bloomStrength={0.45}
+              grainIntensity={0.02}
+              maxRatio={1.25}
+              budget={400000}
               zIndex={999998}
             />
             <CustomCursor />

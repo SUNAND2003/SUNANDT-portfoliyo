@@ -517,12 +517,19 @@ const Galaxy = ({
 
       render();
       const busy = motion > 0 || state.boost > 0 || state.active !== target || state.reveal < 1;
-      if (busy) raf = requestAnimationFrame(frame);
-      else last = 0;
+      if (busy && visible && !document.hidden) {
+        raf = requestAnimationFrame(frame);
+      } else {
+        raf = 0;
+        last = 0;
+      }
     };
 
     const wake = () => {
-      if (!raf && visible && !document.hidden) raf = requestAnimationFrame(frame);
+      if (!raf && visible && !document.hidden) {
+        last = 0;
+        raf = requestAnimationFrame(frame);
+      }
     };
 
     const resize = () => {
@@ -585,8 +592,15 @@ const Galaxy = ({
     };
 
     const onVisibility = () => {
-      last = 0;
-      wake();
+      if (document.hidden) {
+        if (raf) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+        }
+      } else if (visible) {
+        last = 0;
+        wake();
+      }
     };
 
     const resizeObserver = new ResizeObserver(resize);
@@ -596,6 +610,9 @@ const Galaxy = ({
       if (visible) {
         last = 0;
         wake();
+      } else if (raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
       }
     });
     intersection.observe(container);
