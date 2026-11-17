@@ -1,11 +1,11 @@
 /* ==========================================================================
-   MINIMALIST EDITORIAL PRELOADER (PREVIOUS THEME RESTORED)
+   MINIMALIST EDITORIAL PRELOADER (FULL LENGTH LINES & EXPANDED TEXT)
    ========================================================================== */
 
 .preloader {
   position: fixed !important;
   inset: 0 !important;
-  width: 100% !important;
+  width: 100vw !important;
   height: 100vh !important;
   display: flex !important;
   align-items: center !important;
@@ -29,18 +29,24 @@
   pointer-events: none;
 }
 
-/* Heading with Left and Right Accent Lines */
+/* Heading with Full-Length Edge-to-Edge Left and Right Lines */
 .preloader .preloader-heading {
   position: relative !important;
   z-index: 20 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 24px !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  padding: 0 20px !important;
+  gap: 28px !important;
+  box-sizing: border-box !important;
 }
 
-/* Increased text size from 20px to 28px */
+/* Increased text size */
 .preloader .preloader-heading .load-text {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
   font-size: 28px !important;
   font-weight: 300 !important;
   letter-spacing: 16px !important;
@@ -48,45 +54,47 @@
   color: #ffffff !important;
   margin: 0 !important;
   padding-left: 16px !important; /* offsets letter-spacing of the last letter for perfect centering */
-  text-shadow: 0 0 18px rgba(0, 210, 255, 0.45) !important;
+  text-shadow: 0 0 20px rgba(0, 210, 255, 0.45) !important;
   z-index: 20 !important;
 }
 
-/* Two Accent Lines on Left and Right */
+/* Full Length Accent Lines extending to the viewport edges */
 .preloader-line {
-  display: inline-block !important;
-  width: 65px !important;
+  display: block !important;
+  flex: 1 1 0% !important;
+  width: 100% !important;
   height: 1.5px !important;
-  border-radius: 2px !important;
+  min-width: 20px !important;
   pointer-events: none;
 }
 
 .preloader-line-left {
-  background: linear-gradient(90deg, transparent 0%, rgba(0, 210, 255, 0.3) 30%, #00d2ff 100%) !important;
-  box-shadow: 0 0 10px rgba(0, 210, 255, 0.6) !important;
-  animation: preloaderLineGlow 1.2s ease-in-out infinite alternate !important;
+  background: linear-gradient(90deg, transparent 0%, rgba(0, 210, 255, 0.25) 20%, rgba(0, 210, 255, 0.7) 65%, #00d2ff 100%) !important;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.65) !important;
+  animation: preloaderLineGlow 1.4s ease-in-out infinite alternate !important;
 }
 
 .preloader-line-right {
-  background: linear-gradient(90deg, #00d2ff 0%, rgba(0, 210, 255, 0.3) 70%, transparent 100%) !important;
-  box-shadow: 0 0 10px rgba(0, 210, 255, 0.6) !important;
-  animation: preloaderLineGlow 1.2s ease-in-out infinite alternate !important;
+  background: linear-gradient(90deg, #00d2ff 0%, rgba(0, 210, 255, 0.7) 35%, rgba(0, 210, 255, 0.25) 80%, transparent 100%) !important;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.65) !important;
+  animation: preloaderLineGlow 1.4s ease-in-out infinite alternate !important;
 }
 
 @keyframes preloaderLineGlow {
   0% {
-    opacity: 0.5;
-    transform: scaleX(0.85);
+    opacity: 0.55;
+    box-shadow: 0 0 6px rgba(0, 210, 255, 0.4);
   }
   100% {
     opacity: 1;
-    transform: scaleX(1.05);
+    box-shadow: 0 0 14px rgba(0, 210, 255, 0.85);
   }
 }
 
 /* Responsive Scaling */
 @media (max-width: 768px) {
   .preloader .preloader-heading {
+    padding: 0 14px !important;
     gap: 16px !important;
   }
   .preloader .preloader-heading .load-text {
@@ -94,21 +102,16 @@
     letter-spacing: 12px !important;
     padding-left: 12px !important;
   }
-  .preloader-line {
-    width: 42px !important;
-  }
 }
 
 @media (max-width: 480px) {
   .preloader .preloader-heading {
+    padding: 0 10px !important;
     gap: 12px !important;
   }
   .preloader .preloader-heading .load-text {
     font-size: 18px !important;
     letter-spacing: 8px !important;
     padding-left: 8px !important;
-  }
-  .preloader-line {
-    width: 30px !important;
   }
 }
