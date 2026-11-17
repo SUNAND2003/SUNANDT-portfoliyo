@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { services } from '../data/portfolioData';
 import FlipCard from './FlipCard';
 
 export default function Services({ isStandalonePage = false }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const renderFront = (service) => (
     <div className="service-flip-face">
       <div>
@@ -36,7 +45,7 @@ export default function Services({ isStandalonePage = false }) {
 
       <div className="service-flip-footer">
         <span className="service-flip-hint">
-          <i className="ri-drag-move-2-line"></i> Drag or click to flip
+          <i className="ri-repeat-2-line"></i> {isMobile ? 'Tap card to flip' : 'Drag or click to flip'}
         </span>
       </div>
     </div>
@@ -54,7 +63,7 @@ export default function Services({ isStandalonePage = false }) {
           </div>
         </div>
 
-        <h4 className="service-flip-title" style={{ fontSize: '20px' }}>
+        <h4 className="service-flip-title" style={{ fontSize: isMobile ? '18px' : '20px' }}>
           {service.title}
         </h4>
         <p className="service-flip-back-desc">{service.description}</p>
@@ -90,7 +99,7 @@ export default function Services({ isStandalonePage = false }) {
         </a>
 
         <span className="service-flip-hint" style={{ color: '#94a3b8' }}>
-          <i className="ri-arrow-go-back-line"></i> Return
+          <i className="ri-arrow-go-back-line"></i> {isMobile ? 'Tap to return' : 'Return'}
         </span>
       </div>
     </div>
@@ -141,7 +150,11 @@ export default function Services({ isStandalonePage = false }) {
             return (
               <div key={service.id} className="col-lg-6 col-md-6 col-12">
                 <motion.div
-                  initial={{ opacity: 0, x: isLeft ? -60 : 60, y: 20 }}
+                  initial={{
+                    opacity: 0,
+                    x: isMobile ? 0 : (isLeft ? -50 : 50),
+                    y: isMobile ? 25 : 20
+                  }}
                   whileInView={{ opacity: 1, x: 0, y: 0 }}
                   viewport={{ once: true, amount: 0.15 }}
                   transition={{
@@ -153,13 +166,13 @@ export default function Services({ isStandalonePage = false }) {
                   <FlipCard
                     front={renderFront(service)}
                     back={renderBack(service)}
-                    height={400}
+                    height={isMobile ? 440 : 410}
                     radius={20}
-                    tilt={true}
+                    tilt={!isMobile}
                     tiltMax={10}
-                    glare={true}
+                    glare={!isMobile}
                     glareOpacity={0.18}
-                    hoverScale={1.02}
+                    hoverScale={isMobile ? 1 : 1.02}
                     perspective={1100}
                     background="#0c0e14"
                     color="#ffffff"

@@ -13,7 +13,7 @@ import {
 
 import './FlipCard.css';
 
-const SLOP = { fine: 4, coarse: 8 };
+const SLOP = { fine: 4, coarse: 18 };
 const TILT_SPRING = { stiffness: 240, damping: 24, mass: 0.6 };
 const LIFT_SPRING = { stiffness: 320, damping: 26 };
 const FLING = 0.16;
@@ -124,9 +124,6 @@ export default function FlipCard({
     if (disabled || e.button !== 0 || grip.current) return;
     // Don't intercept clicks on interactive elements inside the card
     if (e.target.closest('a, button, input, textarea')) return;
-    try {
-      e.currentTarget.setPointerCapture(e.pointerId);
-    } catch {}
     spin.current?.stop();
     grip.current = {
       id: e.pointerId,
@@ -137,7 +134,7 @@ export default function FlipCard({
       slop: e.pointerType === 'touch' ? SLOP.coarse : SLOP.fine,
       hist: []
     };
-    if (!reduce) lift.set(hoverScale);
+    if (!reduce && e.pointerType !== 'touch') lift.set(hoverScale);
   };
   const onPointerMove = e => {
     const g = grip.current;
@@ -146,6 +143,9 @@ export default function FlipCard({
       if (!g.moved) {
         if (Math.abs(d) < g.slop || !draggable || reduce) return;
         g.moved = true;
+        try {
+          e.currentTarget.setPointerCapture(e.pointerId);
+        } catch {}
         setDragging(true);
         tiltX.set(0);
         tiltY.set(0);
