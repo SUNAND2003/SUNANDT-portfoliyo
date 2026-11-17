@@ -84,13 +84,15 @@ export default function Navbar() {
               <a
                 href="#home"
                 className="logo-text"
-                aria-label="Sunand - Home"
+                aria-label="Sunand T - Home"
                 onClick={(e) => {
                   e.preventDefault();
                   scrollToSection('#home');
                 }}
               >
-                Sunand
+                <span className="logo-main">Sunand</span>
+                <span className="logo-t ms-1">T</span>
+                <span className="logo-dot">.</span>
               </a>
             </div>
 
@@ -172,13 +174,16 @@ export default function Navbar() {
             <a
               href="#home"
               className="logo-text"
+              aria-label="Sunand T - Home"
               onClick={(e) => {
                 e.preventDefault();
                 setIsMobileMenuOpen(false);
                 scrollToSection('#home');
               }}
             >
-              Sunand
+              <span className="logo-main">Sunand</span>
+              <span className="logo-t ms-1">T</span>
+              <span className="logo-dot">.</span>
             </a>
             <button
               className="sidebar__close-btn"
