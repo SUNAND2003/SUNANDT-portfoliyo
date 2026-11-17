@@ -37,7 +37,9 @@ export default function Experience({ isStandalonePage = false }) {
       >
         <LightTunnel
           cableColor="#ffffff"
-          pulseColor="#ffffff"
+          pulseColor="#00d2ff"
+          tunnelColor="#00d2ff"
+          tunnelOpacity={0.05}
           cableCount={56}
           pulseDensity={0.5}
           flowDirection="inward"

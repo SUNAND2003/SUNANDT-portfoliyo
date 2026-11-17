@@ -79,15 +79,15 @@ export default function Contact({ isStandalonePage = false }) {
         }}
       >
         <DotField
-          gradientFrom="#22c55e"
-          gradientTo="#10b981"
+          gradientFrom="#00d2ff"
+          gradientTo="#0077ff"
           dotRadius={1.5}
           dotSpacing={16}
           cursorRadius={220}
           bulgeStrength={0.5}
           glowRadius={160}
           glowIntensity={0.85}
-          glowColor="#4ade80"
+          glowColor="#38bdf8"
           baseOpacity={0.3}
           waveAmplitude={2}
           sparkle={true}
@@ -166,7 +166,7 @@ export default function Contact({ isStandalonePage = false }) {
                       href={personalInfo.socials.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ color: '#22c55e', fontWeight: 600 }}
+                      style={{ color: '#00d2ff', fontWeight: 600 }}
                     >
                       Chat on WhatsApp
                     </a>

@@ -39,14 +39,14 @@ html, body {
   background: #3f3f46;
 }
 
-/* Top Scroll Progress Bar - Active Green Accent */
+/* Top Scroll Progress Bar - Active Electric Blue Accent */
 .scroll-progress-bar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, rgba(34, 197, 94, 0.4), #22c55e) !important;
+  background: linear-gradient(90deg, rgba(0, 210, 255, 0.4), #00d2ff) !important;
   transform-origin: 0%;
   z-index: 9999999;
 }
@@ -164,15 +164,15 @@ html, body {
 }
 
 .center-nav-pill .pill-nav-link:hover {
-  color: #22c55e;
-  background: rgba(34, 197, 94, 0.14);
+  color: #00d2ff;
+  background: rgba(0, 210, 255, 0.14);
 }
 
 .center-nav-pill .pill-nav-link.active {
   color: #000000 !important;
-  background: #22c55e !important;
+  background: #00d2ff !important;
   font-weight: 600;
-  box-shadow: 0 2px 14px rgba(34, 197, 94, 0.45);
+  box-shadow: 0 2px 14px rgba(0, 210, 255, 0.45);
 }
 
 /* Ensure PillNav links are pure white */
@@ -205,7 +205,7 @@ html, body {
   background: #0d120e !important;
   color: #ffffff !important;
   border-color: transparent !important;
-  box-shadow: 0 4px 20px rgba(34, 197, 94, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 210, 255, 0.35);
   transform: translateY(-1px);
 }
 
@@ -217,7 +217,7 @@ html, body {
 
 .talk-pill-btn:hover .talk-arrow {
   transform: translate(2px, -2px);
-  color: #22c55e;
+  color: #00d2ff;
 }
 
 /* ==========================================================================
@@ -383,25 +383,25 @@ html, body {
 }
 
 .exact-model-sidebar .mobile-nav-link:hover .mobile-nav-icon {
-  color: #22c55e;
+  color: #00d2ff;
 }
 
 .exact-model-sidebar .mobile-nav-link:hover .mobile-nav-arrow {
-  color: #22c55e;
+  color: #00d2ff;
   transform: translateX(3px);
 }
 
 .exact-model-sidebar .mobile-nav-link.active {
-  background: rgba(34, 197, 94, 0.14) !important;
-  border-color: rgba(34, 197, 94, 0.4) !important;
-  color: #22c55e !important;
-  box-shadow: 0 0 16px rgba(34, 197, 94, 0.12) !important;
+  background: rgba(0, 210, 255, 0.14) !important;
+  border-color: rgba(0, 210, 255, 0.4) !important;
+  color: #00d2ff !important;
+  box-shadow: 0 0 16px rgba(0, 210, 255, 0.12) !important;
   font-weight: 600 !important;
 }
 
 .exact-model-sidebar .mobile-nav-link.active .mobile-nav-icon,
 .exact-model-sidebar .mobile-nav-link.active .mobile-nav-arrow {
-  color: #22c55e !important;
+  color: #00d2ff !important;
 }
 
 /* Mobile Drawer Social Icons */
@@ -421,9 +421,9 @@ html, body {
 }
 
 .exact-model-sidebar .mobile-social-icon:hover {
-  background: rgba(34, 197, 94, 0.15);
-  border-color: rgba(34, 197, 94, 0.4);
-  color: #22c55e !important;
+  background: rgba(0, 210, 255, 0.15);
+  border-color: rgba(0, 210, 255, 0.4);
+  color: #00d2ff !important;
   transform: translateY(-2px);
 }
 
@@ -811,8 +811,8 @@ html, body {
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(180deg, rgba(34, 197, 94, 0.25) 0%, #22c55e 100%);
-  box-shadow: 0 0 14px rgba(34, 197, 94, 0.85);
+  background: linear-gradient(180deg, rgba(0, 210, 255, 0.25) 0%, #00d2ff 100%);
+  box-shadow: 0 0 14px rgba(0, 210, 255, 0.85);
   border-radius: 9999px;
 }
 
@@ -835,7 +835,7 @@ html, body {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  border: 1.5px solid #22c55e;
+  border: 1.5px solid #00d2ff;
   transform: translate(-50%, -50%);
   animation: arrowBeaconPulse 2s ease-out infinite;
   pointer-events: none;
@@ -859,12 +859,12 @@ html, body {
   height: 34px;
   border-radius: 50%;
   background: #000000;
-  border: 2px solid #22c55e;
-  box-shadow: 0 0 18px rgba(34, 197, 94, 0.85), inset 0 0 8px rgba(34, 197, 94, 0.4);
+  border: 2px solid #00d2ff;
+  box-shadow: 0 0 18px rgba(0, 210, 255, 0.85), inset 0 0 8px rgba(0, 210, 255, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #22c55e;
+  color: #00d2ff;
   font-size: 16px;
   animation: arrowGentleBounce 1.5s ease-in-out infinite;
 }
@@ -964,26 +964,26 @@ html, body {
   color: #ffffff !important;
 }
 
-/* Vibrant Green Active Status Pill */
+/* Vibrant Electric Blue Active Status Pill */
 .status-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 4px 12px;
-  background: rgba(34, 197, 94, 0.12) !important;
-  border: 1px solid rgba(34, 197, 94, 0.35) !important;
+  background: rgba(0, 210, 255, 0.12) !important;
+  border: 1px solid rgba(0, 210, 255, 0.35) !important;
   border-radius: 9999px;
   font-size: 11.5px;
   font-weight: 600;
-  color: #22c55e !important;
+  color: #00d2ff !important;
 }
 
 .status-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #22c55e !important;
-  box-shadow: 0 0 8px #22c55e;
+  background: #00d2ff !important;
+  box-shadow: 0 0 8px #00d2ff;
   animation: pulse-dot 1.8s infinite;
 }
 
@@ -1073,7 +1073,7 @@ html, body {
   right: -5%;
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.12), transparent 70%);
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.12), transparent 70%);
   animation: servicesOrbFloat1 14s ease-in-out infinite alternate;
 }
 
@@ -1082,7 +1082,7 @@ html, body {
   left: -8%;
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.1), transparent 70%);
+  background: radial-gradient(circle, rgba(0, 119, 255, 0.1), transparent 70%);
   animation: servicesOrbFloat2 18s ease-in-out infinite alternate;
 }
 
@@ -1091,7 +1091,7 @@ html, body {
   left: 45%;
   width: 380px;
   height: 380px;
-  background: radial-gradient(circle, rgba(34, 197, 94, 0.06), transparent 70%);
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.06), transparent 70%);
   animation: servicesOrbFloat3 22s ease-in-out infinite alternate;
 }
 
@@ -1136,7 +1136,7 @@ html, body {
   left: 0;
   right: 0;
   height: 3.5px;
-  background: linear-gradient(90deg, #22c55e, #10b981, #065f46);
+  background: linear-gradient(90deg, #00d2ff, #0077ff, #0369a1);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1151,7 +1151,7 @@ html, body {
   border-radius: inherit;
   background: radial-gradient(
     420px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-    rgba(34, 197, 94, 0.12),
+    rgba(0, 210, 255, 0.12),
     transparent 70%
   );
   opacity: 0;
@@ -1161,8 +1161,8 @@ html, body {
 }
 
 .modern-service-card:hover {
-  border-color: rgba(34, 197, 94, 0.4) !important;
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(34, 197, 94, 0.15) !important;
+  border-color: rgba(0, 210, 255, 0.4) !important;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 210, 255, 0.15) !important;
 }
 
 .modern-service-card:hover::before {
@@ -1202,8 +1202,8 @@ html, body {
 
 .modern-service-card:hover .service-icon-box {
   transform: scale(1.12) rotate(-5deg);
-  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.35);
-  color: #22c55e !important;
+  box-shadow: 0 8px 24px rgba(0, 210, 255, 0.35);
+  color: #00d2ff !important;
 }
 
 .service-category-tag {
@@ -1217,7 +1217,7 @@ html, body {
 }
 
 .modern-service-card:hover .service-category-tag {
-  color: #22c55e !important;
+  color: #00d2ff !important;
 }
 
 .service-index-number {
@@ -1243,11 +1243,11 @@ html, body {
 }
 
 .modern-service-card:hover .service-arrow-circle {
-  background: #22c55e !important;
+  background: #00d2ff !important;
   color: #000000 !important;
-  border-color: #22c55e !important;
+  border-color: #00d2ff !important;
   transform: rotate(45deg) scale(1.12);
-  box-shadow: 0 4px 18px rgba(34, 197, 94, 0.45);
+  box-shadow: 0 4px 18px rgba(0, 210, 255, 0.45);
 }
 
 /* Service Card Content */
@@ -1326,12 +1326,12 @@ html, body {
 .deliverable-check {
   font-size: 13px;
   font-weight: 700;
-  color: #22c55e;
+  color: #00d2ff;
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .modern-service-card:hover .deliverable-check {
-  color: #22c55e;
+  color: #00d2ff;
 }
 
 .deliverable-tag:hover .deliverable-check {
@@ -1362,12 +1362,12 @@ html, body {
 }
 
 .service-discuss-link:hover {
-  color: #22c55e !important;
+  color: #00d2ff !important;
 }
 
 .service-discuss-link:hover i {
   transform: translateX(8px);
-  color: #22c55e;
+  color: #00d2ff;
 }
 
 /* Animated Callout Banner at bottom of Services */
@@ -1390,7 +1390,7 @@ html, body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle at 50% 50%, rgba(34, 197, 94, 0.15), transparent 60%);
+  background: radial-gradient(circle at 50% 50%, rgba(0, 210, 255, 0.15), transparent 60%);
   pointer-events: none;
   animation: calloutGlowRotate 16s linear infinite;
   z-index: 0;
@@ -1402,8 +1402,8 @@ html, body {
 }
 
 .services-callout-banner:hover {
-  border-color: rgba(34, 197, 94, 0.45) !important;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3), 0 0 30px rgba(34, 197, 94, 0.2) !important;
+  border-color: rgba(0, 210, 255, 0.45) !important;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 210, 255, 0.2) !important;
 }
 
 .services-callout-badge {
@@ -1450,9 +1450,9 @@ html, body {
 }
 
 .services-callout-btn:hover {
-  background: #22c55e !important;
+  background: #00d2ff !important;
   color: #000000 !important;
-  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 210, 255, 0.5);
   transform: translateY(-2px) scale(1.03);
 }
 
@@ -1474,8 +1474,8 @@ html, body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #22c55e !important;
-  box-shadow: 0 0 8px #22c55e;
+  background: #00d2ff !important;
+  box-shadow: 0 0 8px #00d2ff;
   display: inline-block;
   animation: pulse-dot 1.8s infinite;
 }
@@ -1760,9 +1760,9 @@ html, body {
 
 .projects-area .filter-tab-btn.active {
   color: #000000 !important;
-  background: #22c55e !important;
-  border-color: #22c55e !important;
-  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.35) !important;
+  background: #00d2ff !important;
+  border-color: #00d2ff !important;
+  box-shadow: 0 4px 16px rgba(0, 210, 255, 0.35) !important;
   font-weight: 600;
 }
 
@@ -1950,14 +1950,14 @@ html, body {
 }
 
 .contact-area .contact-content-part .single-contact a:hover {
-  color: #22c55e !important;
+  color: #00d2ff !important;
   text-decoration: underline;
 }
 
 .contact-area .contact-content-part .single-contact .circle-btn {
-  background: rgba(34, 197, 94, 0.1) !important;
-  border: 1px solid rgba(34, 197, 94, 0.35) !important;
-  color: #22c55e !important;
+  background: rgba(0, 210, 255, 0.1) !important;
+  border: 1px solid rgba(0, 210, 255, 0.35) !important;
+  color: #00d2ff !important;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
   transition: all 0.25s ease;
   width: 46px;
@@ -1969,7 +1969,7 @@ html, body {
 }
 
 .contact-area .contact-content-part .single-contact .circle-btn i {
-  color: #22c55e !important;
+  color: #00d2ff !important;
   font-size: 20px !important;
   line-height: 1 !important;
   display: inline-block !important;
@@ -1977,9 +1977,9 @@ html, body {
 }
 
 .contact-area .contact-content-part .single-contact .circle-btn:hover {
-  background: #22c55e !important;
-  border-color: #22c55e !important;
-  box-shadow: 0 6px 20px rgba(34, 197, 94, 0.45) !important;
+  background: #00d2ff !important;
+  border-color: #00d2ff !important;
+  box-shadow: 0 6px 20px rgba(0, 210, 255, 0.45) !important;
   transform: translateY(-2px);
 }
 
@@ -2009,10 +2009,10 @@ html, body {
 }
 
 .contact-area .contact-content-part .about-social a:hover {
-  background: #22c55e !important;
+  background: #00d2ff !important;
   color: #000000 !important;
-  border-color: #22c55e !important;
-  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.45) !important;
+  border-color: #00d2ff !important;
+  box-shadow: 0 6px 18px rgba(0, 210, 255, 0.45) !important;
   transform: translateY(-2px);
 }
 
@@ -2151,10 +2151,10 @@ html, body {
    SCROLL TO TOP ACTIVE ACCENT
    ========================================================================== */
 .progress-wrap svg.progress-circle path {
-  stroke: #22c55e !important;
+  stroke: #00d2ff !important;
 }
 
 .progress-wrap:hover i {
-  color: #22c55e !important;
+  color: #00d2ff !important;
 }
 

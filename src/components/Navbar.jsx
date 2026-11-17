@@ -121,7 +121,7 @@ export default function Navbar() {
                   size="sm"
                   color="#ffffff"
                   activeTextColor="#000000"
-                  colors={['#ffffff', '#22c55e']}
+                  colors={['#ffffff', '#00d2ff']}
                   particleCount={15}
                   spread={48}
                   animationTime={550}
@@ -144,8 +144,8 @@ export default function Navbar() {
                   scrollToSection('#contact');
                 }}
                 className="talk-pill-btn d-none d-sm-inline-flex"
-                color="#22c55e"
-                trailColor="#22c55e"
+                color="#00d2ff"
+                trailColor="#00d2ff"
                 duration={3.5}
                 direction="clockwise"
                 stars={1}
@@ -247,8 +247,8 @@ export default function Navbar() {
                 setIsMobileMenuOpen(false);
                 scrollToSection('#contact');
               }}
-              color="#22c55e"
-              trailColor="#22c55e"
+              color="#00d2ff"
+              trailColor="#00d2ff"
               duration={3.5}
               direction="clockwise"
               stars={1}

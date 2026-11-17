@@ -54,14 +54,14 @@ export default function Services({ isStandalonePage = false }) {
       <div>
         <div className="service-flip-top">
           <div>
-            <span className="service-flip-tag" style={{ color: '#22c55e' }}>
+            <span className="service-flip-tag" style={{ color: '#00d2ff' }}>
               Full Capabilities
             </span>
             <span className="service-flip-index">/{service.id}</span>
           </div>
           <span
             className="service-flip-indicator"
-            style={{ borderColor: 'rgba(34, 197, 94, 0.4)', color: '#22c55e' }}
+            style={{ borderColor: 'rgba(0, 210, 255, 0.4)', color: '#00d2ff' }}
           >
             <i className="ri-check-double-line"></i> Deliverables
           </span>
@@ -135,7 +135,7 @@ export default function Services({ isStandalonePage = false }) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
               >
-                <i className="ri-flashlight-line me-1" style={{ color: '#22c55e' }}></i> Capabilities & Expertise
+                <i className="ri-flashlight-line me-1" style={{ color: '#00d2ff' }}></i> Capabilities & Expertise
               </motion.span>
               <div className="section-title section-black-title">
                 <h2>Services I Offer</h2>
@@ -189,7 +189,7 @@ export default function Services({ isStandalonePage = false }) {
           <div className="row align-items-center justify-content-between g-4 position-relative" style={{ zIndex: 1 }}>
             <div className="col-lg-8">
               <span className="services-callout-badge">
-                <i className="ri-star-line me-1" style={{ color: '#22c55e' }}></i> Custom Solutions Available
+                <i className="ri-star-line me-1" style={{ color: '#00d2ff' }}></i> Custom Solutions Available
               </span>
               <h3 className="services-callout-title">Have a specific project requirement or architecture in mind?</h3>
               <p className="services-callout-text mb-0">
