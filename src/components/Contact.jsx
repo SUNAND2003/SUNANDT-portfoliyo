@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { personalInfo } from '../data/portfolioData';
+import DotField from './DotField';
 
 export default function Contact({ isStandalonePage = false }) {
   const [formData, setFormData] = useState({
@@ -64,8 +65,37 @@ export default function Contact({ isStandalonePage = false }) {
   };
 
   return (
-    <section id="contact" className="contact-area pt-80 pb-80">
-      <div className="container">
+    <section id="contact" className="contact-area pt-80 pb-80 position-relative overflow-hidden">
+      {/* Background DotField Interactive Animation */}
+      <div
+        className="contact-dotfield-bg"
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: 'none',
+          overflow: 'hidden'
+        }}
+      >
+        <DotField
+          gradientFrom="#22c55e"
+          gradientTo="#10b981"
+          dotRadius={1.5}
+          dotSpacing={16}
+          cursorRadius={220}
+          bulgeStrength={0.5}
+          glowRadius={160}
+          glowIntensity={0.85}
+          glowColor="#4ade80"
+          baseOpacity={0.3}
+          waveAmplitude={2}
+          sparkle={true}
+          interactive={true}
+        />
+      </div>
+
+      <div className="container position-relative" style={{ zIndex: 1 }}>
         {!isStandalonePage && (
           <div className="row mb-50">
             <div className="col-12 text-center">
