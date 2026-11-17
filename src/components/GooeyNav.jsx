@@ -8,9 +8,9 @@ const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : us
 const THEMES = {
   dark: {
     '--gn-frame': 'rgba(20, 20, 24, 0.75)',
-    '--gn-frame-edge': '#00d2ff',
-    '--gn-frame-highlight': 'rgba(0, 210, 255, 0.5)',
-    '--gn-frame-shadow': '0 22px 44px -20px rgba(0, 0, 0, 0.8), 0 0 18px rgba(0, 210, 255, 0.35)',
+    '--gn-frame-edge': 'rgba(0, 210, 255, 0.3)',
+    '--gn-frame-highlight': 'rgba(0, 210, 255, 0.15)',
+    '--gn-frame-shadow': '0 22px 44px -20px rgba(0, 0, 0, 0.8), 0 6px 16px -10px rgba(0, 0, 0, 0.5)',
     '--gn-ink': '#f4f4f5',
     '--gn-muted': 'rgba(244, 244, 245, 0.65)'
   },

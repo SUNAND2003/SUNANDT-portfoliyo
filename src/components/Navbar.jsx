@@ -150,9 +150,9 @@ export default function Navbar() {
                 direction="clockwise"
                 stars={1}
                 trailLength={0.3}
-                thickness={1.5}
+                thickness={1.2}
                 radius={9999}
-                glow={0.7}
+                glow={0.25}
                 hover="lap"
                 sparkle={true}
                 clickPulse={true}
