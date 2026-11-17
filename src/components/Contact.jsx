@@ -119,7 +119,7 @@ export default function Contact({ isStandalonePage = false }) {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="col-12 text-center">
+            <div className="col-12 text-center" style={{ paddingTop: '35px' }}>
               <motion.span
                 className="section-badge"
                 initial={{ opacity: 0, scale: 0.85 }}
