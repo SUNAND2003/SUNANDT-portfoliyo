@@ -60,7 +60,7 @@ varying vec3 vFoilY;
 
 float foilHash(vec2 p) {
   p = fract(p * vec2(234.34, 435.345));
-  p += dot(p, p + 34.23);
+  p += dot(p, p + vec2(34.23));
   return fract(p.x * p.y);
 }
 
@@ -79,7 +79,7 @@ vec3 foilSpectrum(float t) {
 
 vec3 foilGrating(float u, float spacing) {
   vec3 color = vec3(0.0);
-  for (let m = 1; m <= 2; m++) {
+  for (int m = 1; m <= 2; m++) {
     float order = float(m);
     float t = (spacing * abs(u) / order - 0.38) / 0.32;
     color += foilSpectrum(t) / order;
@@ -92,10 +92,10 @@ vec3 foilShard(vec2 p) {
   float best = 9.0;
   float edge = 9.0;
   vec2 id = base;
-  for (let j = -1; j <= 1; j++) {
-    for (let i = -1; i <= 1; i++) {
+  for (int j = -1; j <= 1; j++) {
+    for (int i = -1; i <= 1; i++) {
       vec2 cell = base + vec2(float(i), float(j));
-      vec2 site = cell + vec2(foilHash(cell), foilHash(cell + 7.31)) * 0.9 + 0.05;
+      vec2 site = cell + vec2(foilHash(cell), foilHash(cell + vec2(7.31))) * 0.9 + vec2(0.05);
       float d = length(site - p);
       if (d < best) {
         edge = best;
@@ -106,7 +106,7 @@ vec3 foilShard(vec2 p) {
       }
     }
   }
-  return vec3(foilHash(id + 3.17), foilHash(id + 11.73), edge - best);
+  return vec3(foilHash(id + vec2(3.17)), foilHash(id + vec2(11.73)), edge - best);
 }
 `;
 
@@ -126,8 +126,8 @@ if (foilStrength > 0.0) {
   rainbow = max(rainbow - 0.35 * min(rainbow.r, min(rainbow.g, rainbow.b)), 0.0);
   vec2 grid = foilP * 64.0;
   vec2 cell = floor(grid);
-  vec2 jitter = vec2(foilHash(cell + 1.7), foilHash(cell + 9.2));
-  float flake = smoothstep(0.32, 0.06, length(fract(grid) - jitter * 0.6 - 0.2)) * step(0.45, foilHash(cell + 4.4));
+  vec2 jitter = vec2(foilHash(cell + vec2(1.7)), foilHash(cell + vec2(9.2)));
+  float flake = smoothstep(0.32, 0.06, length(fract(grid) - jitter * 0.6 - vec2(0.2))) * step(0.45, foilHash(cell + vec2(4.4)));
   vec3 facet = normalize(foilNormal + (vFoilX * (jitter.x - 0.5) + vFoilY * (jitter.y - 0.5)) * 0.8);
   float glint = pow(max(dot(reflect(-foilKey, facet), foilView), 0.0), 28.0);
   glint += 0.7 * pow(max(dot(reflect(-foilTop, facet), foilView), 0.0), 28.0);
@@ -198,8 +198,19 @@ const traceRoundedRect = (path, x, y, width, height, radius) => {
   path.bezierCurveTo(x, y + k, x + k, y, x + r, y);
 };
 
-const loadImage = (cache, url) => {
-  if (!url) return Promise.resolve(null);
+const resolveAssetUrl = url => {
+  if (!url) return '';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:')) return url;
+  if (typeof window !== 'undefined') {
+    const clean = url.startsWith('/') ? url.slice(1) : url;
+    return new URL(clean, window.location.href).href;
+  }
+  return url;
+};
+
+const loadImage = (cache, rawUrl) => {
+  if (!rawUrl) return Promise.resolve(null);
+  const url = resolveAssetUrl(rawUrl);
   const cached = cache.get(url);
   if (cached) return cached;
   const promise = new Promise(resolve => {
@@ -207,14 +218,20 @@ const loadImage = (cache, url) => {
     if (typeof window !== 'undefined' && url.startsWith('http') && !url.startsWith(window.location.origin)) {
       image.crossOrigin = 'anonymous';
     }
-    image.decoding = 'async';
     image.onload = () => resolve(image);
     image.onerror = (err) => {
-      console.warn('Lanyard failed to load image:', url, err);
-      resolve(null);
+      console.warn('Lanyard failed to load image at url:', url, err);
+      if (rawUrl !== url) {
+        const fallback = new Image();
+        fallback.onload = () => resolve(fallback);
+        fallback.onerror = () => resolve(null);
+        fallback.src = rawUrl;
+      } else {
+        resolve(null);
+      }
     };
     image.src = url;
-    if (image.complete && image.naturalWidth > 0) {
+    if (image.complete && (image.naturalWidth > 0 || image.width > 0)) {
       resolve(image);
     }
   });
@@ -425,10 +442,13 @@ const buildWeaveTexture = () => {
 };
 
 const drawFitted = (ctx, image, width, height, fit) => {
-  if (!image || !image.width || !image.height) return;
-  const scale = (fit === 'contain' ? Math.min : Math.max)(width / image.width, height / image.height);
-  const w = image.width * scale;
-  const h = image.height * scale;
+  if (!image) return;
+  const imgW = image.naturalWidth || image.width || 0;
+  const imgH = image.naturalHeight || image.height || 0;
+  if (!imgW || !imgH) return;
+  const scale = (fit === 'contain' ? Math.min : Math.max)(width / imgW, height / imgH);
+  const w = imgW * scale;
+  const h = imgH * scale;
   ctx.drawImage(image, (width - w) / 2, (height - h) / 2, w, h);
 };
 
@@ -835,15 +855,23 @@ const Lanyard = ({
     const frontMaterial = new THREE.MeshPhysicalMaterial({
       map: frontTexture,
       normalMap: grain,
-      normalScale: new THREE.Vector2(0.06, 0.06)
+      normalScale: new THREE.Vector2(0.06, 0.06),
+      polygonOffset: true,
+      polygonOffsetFactor: -1,
+      polygonOffsetUnits: -1
     });
     const backMaterial = new THREE.MeshPhysicalMaterial({
       map: backTexture,
       normalMap: grain,
-      normalScale: new THREE.Vector2(0.06, 0.06)
+      normalScale: new THREE.Vector2(0.06, 0.06),
+      polygonOffset: true,
+      polygonOffsetFactor: -1,
+      polygonOffsetUnits: -1
     });
-    frontMaterial.onBeforeCompile = injectFoil;
-    backMaterial.onBeforeCompile = injectFoil;
+    if (FINISHES[settingsRef.current?.finish]?.foil > 0) {
+      frontMaterial.onBeforeCompile = injectFoil;
+      backMaterial.onBeforeCompile = injectFoil;
+    }
     const edgeMaterial = new THREE.MeshPhysicalMaterial();
     const metalMaterial = new THREE.MeshStandardMaterial({ metalness: 1 });
     const bandMaterial = new THREE.MeshPhysicalMaterial({
@@ -914,6 +942,9 @@ const Lanyard = ({
       paintFace(backCanvas, images.back || images.front, color, s.imageFit);
       frontTexture.needsUpdate = true;
       backTexture.needsUpdate = true;
+      frontMaterial.needsUpdate = true;
+      backMaterial.needsUpdate = true;
+      render();
       start();
     };
 
@@ -962,9 +993,12 @@ const Lanyard = ({
         bodyMesh.geometry = geometry.body;
         frontMesh.geometry = geometry.face;
         backMesh.geometry = geometry.face.clone();
-        frontMesh.position.z = THICKNESS / 2 + BEVEL + 0.0006;
+        bodyMesh.renderOrder = 1;
+        frontMesh.renderOrder = 2;
+        backMesh.renderOrder = 2;
+        frontMesh.position.z = THICKNESS / 2 + BEVEL + 0.0012;
         backMesh.rotation.y = Math.PI;
-        backMesh.position.z = -(THICKNESS / 2 + BEVEL + 0.0006);
+        backMesh.position.z = -(THICKNESS / 2 + BEVEL + 0.0012);
         ring.position.set(0, layout.ringY, 0);
         applied.framingKey = '';
       }
@@ -1010,6 +1044,15 @@ const Lanyard = ({
       });
       foilUniforms.foilStrength.value = finish.foil;
       foilUniforms.foilAspect.value = layout.height / layout.width;
+      if (finish.foil > 0) {
+        frontMaterial.onBeforeCompile = injectFoil;
+        backMaterial.onBeforeCompile = injectFoil;
+      } else {
+        frontMaterial.onBeforeCompile = () => {};
+        backMaterial.onBeforeCompile = () => {};
+      }
+      frontMaterial.needsUpdate = true;
+      backMaterial.needsUpdate = true;
       edgeMaterial.color.setRGB(card[0] * 0.92, card[1] * 0.92, card[2] * 0.92, THREE.SRGBColorSpace);
       edgeMaterial.roughness = Math.min(finish.roughness, 0.35);
       edgeMaterial.metalness = finish.metalness;
