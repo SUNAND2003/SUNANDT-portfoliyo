@@ -1,16 +1,113 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { services } from '../data/portfolioData';
+import FlipCard from './FlipCard';
 
 export default function Services({ isStandalonePage = false }) {
-  // Cursor-tracking spotlight on service cards
-  const handleCardMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    e.currentTarget.style.setProperty('--mouse-x', `${x}px`);
-    e.currentTarget.style.setProperty('--mouse-y', `${y}px`);
-  };
+  const renderFront = (service) => (
+    <div className="service-flip-face">
+      <div>
+        <div className="service-flip-top">
+          <div className="d-flex align-items-center gap-3">
+            <div className="service-flip-icon-box">
+              <i className={service.icon}></i>
+            </div>
+            <div>
+              <span className="service-flip-tag">{service.category}</span>
+              <span className="service-flip-index">/{service.id}</span>
+            </div>
+          </div>
+
+          <span className="service-flip-indicator">
+            <i className="ri-refresh-line"></i> Flip Card
+          </span>
+        </div>
+
+        <h3 className="service-flip-title">{service.title}</h3>
+        <p className="service-flip-short">{service.short}</p>
+
+        {service.features && (
+          <div className="service-flip-features-preview">
+            {service.features.slice(0, 2).map((feat, idx) => (
+              <div key={idx} className="service-flip-feat-item">
+                <i className="ri-checkbox-circle-fill"></i>
+                <span>{feat}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="service-flip-footer">
+        <span className="service-flip-hint">
+          <i className="ri-drag-move-2-line"></i> Drag or click to flip
+        </span>
+        <span className="service-flip-indicator">
+          View Details <i className="ri-arrow-right-line ms-1"></i>
+        </span>
+      </div>
+    </div>
+  );
+
+  const renderBack = (service) => (
+    <div className="service-flip-face">
+      <div>
+        <div className="service-flip-top">
+          <div>
+            <span className="service-flip-tag" style={{ color: '#22c55e' }}>
+              Full Capabilities
+            </span>
+            <span className="service-flip-index">/{service.id}</span>
+          </div>
+          <span
+            className="service-flip-indicator"
+            style={{ borderColor: 'rgba(34, 197, 94, 0.4)', color: '#22c55e' }}
+          >
+            <i className="ri-check-double-line"></i> Deliverables
+          </span>
+        </div>
+
+        <h4 className="service-flip-title" style={{ fontSize: '20px' }}>
+          {service.title}
+        </h4>
+        <p className="service-flip-back-desc">{service.description}</p>
+
+        <div className="service-flip-deliverables-title">Key Inclusions:</div>
+        <div className="service-flip-deliverables-list">
+          {service.features?.map((feat, idx) => (
+            <div key={idx} className="service-flip-deliverable-item">
+              <i className="ri-checkbox-circle-fill"></i>
+              <span>{feat}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="service-flip-footer">
+        <a
+          href="#contact"
+          className="service-flip-btn-primary"
+          onClick={(e) => {
+            e.stopPropagation();
+            const el = document.getElementById('contact');
+            if (el) {
+              if (window.__lenis) {
+                window.__lenis.scrollTo(el, { offset: -70 });
+              } else {
+                el.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          }}
+        >
+          Discuss Service <i className="ri-arrow-right-up-line ms-1"></i>
+        </a>
+
+        <span className="service-flip-hint" style={{ color: '#94a3b8' }}>
+          <i className="ri-arrow-go-back-line"></i> Return
+        </span>
+      </div>
+    </div>
+  );
 
   return (
     <section id="services" className="services-area pt-90 pb-90 position-relative overflow-hidden">
@@ -50,62 +147,31 @@ export default function Services({ isStandalonePage = false }) {
           </motion.div>
         )}
 
-        {/* BENTO GRID SERVICES LAYOUT */}
+        {/* 3D INTERACTIVE FLIPCARD SERVICES GRID */}
         <div className="row g-4">
           {services.map((service, index) => (
-            <div key={service.id} className={service.colClass}>
+            <div key={service.id} className="col-lg-6 col-md-6 col-12">
               <motion.div
-                className="modern-service-card"
                 initial={{ opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.55, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -8 }}
-                onMouseMove={handleCardMouseMove}
               >
-                {/* TOP BAR: ICON + BADGES + ARROW */}
-                <div className="service-card-top">
-                  <div className="d-flex align-items-center gap-3">
-                    <div className="service-icon-box">
-                      <i className={service.icon}></i>
-                    </div>
-                    <div>
-                      <span className="service-category-tag">{service.category}</span>
-                      <span className="service-index-number">/{service.id}</span>
-                    </div>
-                  </div>
-
-                  <a href="#contact" className="service-arrow-circle" aria-label={`Inquire about ${service.title}`}>
-                    <i className="ri-arrow-right-up-line"></i>
-                  </a>
-                </div>
-
-                {/* CARD CONTENT */}
-                <div className="service-card-content">
-                  <h3 className="service-card-heading">{service.title}</h3>
-                  <p className="service-card-short">{service.short}</p>
-                  <p className="service-card-desc">{service.description}</p>
-                </div>
-
-                {/* DELIVERABLES PILLS */}
-                {service.features && (
-                  <div className="service-deliverables">
-                    <div className="deliverables-grid">
-                      {service.features.map((feat, idx) => (
-                        <span key={idx} className="deliverable-tag">
-                          <i className="ri-check-line deliverable-check"></i> {feat}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* BOTTOM LINK */}
-                <div className="service-card-footer">
-                  <a href="#contact" className="service-discuss-link">
-                    Discuss this service <i className="ri-arrow-right-line"></i>
-                  </a>
-                </div>
+                <FlipCard
+                  front={renderFront(service)}
+                  back={renderBack(service)}
+                  height={400}
+                  radius={20}
+                  tilt={true}
+                  tiltMax={10}
+                  glare={true}
+                  glareOpacity={0.18}
+                  hoverScale={1.02}
+                  perspective={1100}
+                  background="#0c0e14"
+                  color="#ffffff"
+                  ariaLabel={`Flip card for ${service.title}`}
+                />
               </motion.div>
             </div>
           ))}
