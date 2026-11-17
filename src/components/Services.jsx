@@ -13,11 +13,7 @@ export default function Services({ isStandalonePage = false }) {
   };
 
   return (
-    <section id="services" className="services-area center-white-showcase pt-100 pb-100 position-relative overflow-hidden">
-      {/* SECTION CONTRAST TRIMS */}
-      <div className="section-contrast-trim trim-top" aria-hidden="true" />
-      <div className="section-contrast-trim trim-bottom" aria-hidden="true" />
-
+    <section id="services" className="services-area pt-90 pb-90 position-relative overflow-hidden">
       {/* AMBIENT FLOATING GLOW ORBS IN BACKGROUND */}
       <div className="services-ambient-bg" aria-hidden="true">
         <div className="services-glow-orb services-glow-orb-1" />
@@ -42,7 +38,7 @@ export default function Services({ isStandalonePage = false }) {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
               >
-                <i className="ri-flashlight-line me-1" style={{ color: 'var(--current-accent, #22c55e)' }}></i> Center Spotlight &bull; Capabilities
+                <i className="ri-flashlight-line me-1" style={{ color: '#22c55e' }}></i> Capabilities & Expertise
               </motion.span>
               <div className="section-title section-black-title">
                 <h2>Services I Offer</h2>
