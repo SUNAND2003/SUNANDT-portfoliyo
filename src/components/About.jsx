@@ -136,7 +136,7 @@ export default function About({ isStandalonePage = false }) {
                 transition={{ duration: 0.4, delay: idx * 0.1 }}
               >
                 <div className="skill-category-title">
-                  <i className="ri-code-s-slash-line text-primary"></i>
+                  <i className="ri-code-s-slash-line text-primary" style={{ color: '#00d2ff' }}></i>
                   {cat.name}
                 </div>
                 <div className="skill-grid">

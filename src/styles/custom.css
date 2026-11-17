@@ -737,6 +737,12 @@ html, body {
   gap: 10px;
 }
 
+.skill-category-title i,
+.skill-category-title .ri-code-s-slash-line,
+.text-primary {
+  color: #00d2ff !important;
+}
+
 .skill-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
