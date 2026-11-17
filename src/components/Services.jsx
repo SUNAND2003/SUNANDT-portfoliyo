@@ -17,10 +17,6 @@ export default function Services({ isStandalonePage = false }) {
               <span className="service-flip-index">/{service.id}</span>
             </div>
           </div>
-
-          <span className="service-flip-indicator">
-            <i className="ri-refresh-line"></i> Flip Card
-          </span>
         </div>
 
         <h3 className="service-flip-title">{service.title}</h3>
@@ -42,9 +38,6 @@ export default function Services({ isStandalonePage = false }) {
         <span className="service-flip-hint">
           <i className="ri-drag-move-2-line"></i> Drag or click to flip
         </span>
-        <span className="service-flip-indicator">
-          View Details <i className="ri-arrow-right-line ms-1"></i>
-        </span>
       </div>
     </div>
   );
@@ -59,12 +52,6 @@ export default function Services({ isStandalonePage = false }) {
             </span>
             <span className="service-flip-index">/{service.id}</span>
           </div>
-          <span
-            className="service-flip-indicator"
-            style={{ borderColor: 'rgba(0, 210, 255, 0.4)', color: '#00d2ff' }}
-          >
-            <i className="ri-check-double-line"></i> Deliverables
-          </span>
         </div>
 
         <h4 className="service-flip-title" style={{ fontSize: '20px' }}>
